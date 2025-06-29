@@ -1,9 +1,11 @@
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
+import ConnectModal from "@/components/ConnectModal";
 import { X, Download, ExternalLink } from "lucide-react";
 
 export default function TopBanner() {
   const [isVisible, setIsVisible] = useState(true);
+  const [isConnectModalOpen, setIsConnectModalOpen] = useState(false);
 
   if (!isVisible) return null;
 
@@ -31,12 +33,7 @@ export default function TopBanner() {
             variant="ghost"
             size="sm"
             className="text-white hover:bg-white/20 text-sm"
-            onClick={() =>
-              window.open(
-                "https://www.nhs.uk/about-us/nhs-website-privacy-policy/",
-                "_blank",
-              )
-            }
+            onClick={() => setIsConnectModalOpen(true)}
           >
             <Download className="w-4 h-4 mr-2" />
             Download Guidelines
@@ -60,6 +57,13 @@ export default function TopBanner() {
           </button>
         </div>
       </div>
+
+      {/* Connect Modal */}
+      <ConnectModal
+        isOpen={isConnectModalOpen}
+        onClose={() => setIsConnectModalOpen(false)}
+        initialMode="signup"
+      />
     </div>
   );
 }
