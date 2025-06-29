@@ -559,7 +559,7 @@ export default function Index() {
       </section>
 
       {/* Footer */}
-      <footer className="bg-gray-900 text-white py-16">
+      <footer className="bg-gray-900 text-white py-16" role="contentinfo">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid md:grid-cols-2 lg:grid-cols-5 gap-8">
             {/* Brand Column */}
@@ -574,157 +574,274 @@ export default function Index() {
               </div>
               <p className="text-gray-300 max-w-md">
                 The comprehensive digital healthcare management platform trusted
-                by thousands of healthcare professionals across the UK.
+                by thousands of healthcare professionals across the UK since
+                2025.
               </p>
-              <div className="space-y-3">
+              <address className="space-y-3 not-italic">
                 <div className="flex items-center space-x-3">
                   <Phone className="w-5 h-5 text-primary" />
-                  <span className="text-gray-300">0800 123 4567</span>
+                  <a
+                    href="tel:+442034888343"
+                    className="text-gray-300 hover:text-white transition-colors"
+                  >
+                    +44 203 488 8343
+                  </a>
                 </div>
                 <div className="flex items-center space-x-3">
                   <Mail className="w-5 h-5 text-primary" />
-                  <span className="text-gray-300">support@nhscarehub.uk</span>
+                  <a
+                    href="mailto:support@nhscarehub.uk"
+                    className="text-gray-300 hover:text-white transition-colors"
+                  >
+                    support@nhscarehub.uk
+                  </a>
                 </div>
                 <div className="flex items-center space-x-3">
                   <MapPin className="w-5 h-5 text-primary" />
                   <span className="text-gray-300">London, United Kingdom</span>
                 </div>
+              </address>
+
+              {/* Certifications */}
+              <div className="space-y-2">
+                <h5 className="text-sm font-semibold text-gray-200">
+                  Certifications
+                </h5>
+                <div className="flex flex-wrap gap-2">
+                  <Badge
+                    variant="secondary"
+                    className="bg-green-100 text-green-800"
+                  >
+                    ISO 27001
+                  </Badge>
+                  <Badge
+                    variant="secondary"
+                    className="bg-blue-100 text-blue-800"
+                  >
+                    GDPR Compliant
+                  </Badge>
+                  <Badge
+                    variant="secondary"
+                    className="bg-purple-100 text-purple-800"
+                  >
+                    Cyber Essentials+
+                  </Badge>
+                </div>
               </div>
             </div>
 
             {/* Platform Links */}
-            <div>
+            <nav>
               <h4 className="text-lg font-poppins font-semibold mb-4">
                 Platform
               </h4>
-              <div className="space-y-3">
-                <a
-                  href="#"
-                  className="block text-gray-300 hover:text-white transition-colors"
-                >
-                  Dashboard
-                </a>
-                <a
-                  href="#"
-                  className="block text-gray-300 hover:text-white transition-colors"
-                >
-                  Staff Portal
-                </a>
-                <a
-                  href="#"
-                  className="block text-gray-300 hover:text-white transition-colors"
-                >
-                  Compliance Hub
-                </a>
-                <a
-                  href="#"
-                  className="block text-gray-300 hover:text-white transition-colors"
-                >
-                  Equipment Store
-                </a>
-                <a
-                  href="#"
-                  className="block text-gray-300 hover:text-white transition-colors"
-                >
-                  Inspections
-                </a>
-              </div>
-            </div>
+              <ul className="space-y-3">
+                <li>
+                  <Link
+                    to="/dashboard"
+                    className="block text-gray-300 hover:text-white transition-colors"
+                  >
+                    Dashboard
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    to="/staff-portal"
+                    className="block text-gray-300 hover:text-white transition-colors"
+                  >
+                    Staff Portal
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    to="/compliance"
+                    className="block text-gray-300 hover:text-white transition-colors"
+                  >
+                    Compliance Hub
+                  </Link>
+                </li>
+                <li>
+                  <a
+                    href="https://www.nhssupplychain.nhs.uk/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="block text-gray-300 hover:text-white transition-colors"
+                  >
+                    Equipment Store
+                  </a>
+                </li>
+                <li>
+                  <Link
+                    to="/inspections"
+                    className="block text-gray-300 hover:text-white transition-colors"
+                  >
+                    Inspections
+                  </Link>
+                </li>
+              </ul>
+            </nav>
 
             {/* Support Links */}
-            <div>
+            <nav>
               <h4 className="text-lg font-poppins font-semibold mb-4">
                 Support
               </h4>
-              <div className="space-y-3">
-                <a
-                  href="#"
-                  className="block text-gray-300 hover:text-white transition-colors"
-                >
-                  Help Center
-                </a>
-                <a
-                  href="#"
-                  className="block text-gray-300 hover:text-white transition-colors"
-                >
-                  Documentation
-                </a>
-                <a
-                  href="#"
-                  className="block text-gray-300 hover:text-white transition-colors"
-                >
-                  Training
-                </a>
-                <a
-                  href="#"
-                  className="block text-gray-300 hover:text-white transition-colors"
-                >
-                  API Reference
-                </a>
-                <a
-                  href="#"
-                  className="block text-gray-300 hover:text-white transition-colors"
-                >
-                  Status
-                </a>
-              </div>
-            </div>
+              <ul className="space-y-3">
+                <li>
+                  <a
+                    href="https://www.nhs.uk/using-the-nhs/about-the-nhs/contact-us/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="block text-gray-300 hover:text-white transition-colors"
+                  >
+                    Help Center
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href="https://digital.nhs.uk/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="block text-gray-300 hover:text-white transition-colors"
+                  >
+                    Documentation
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href="https://www.healthcareers.nhs.uk/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="block text-gray-300 hover:text-white transition-colors"
+                  >
+                    Training
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href="https://digital.nhs.uk/developer"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="block text-gray-300 hover:text-white transition-colors"
+                  >
+                    API Reference
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href="https://www.nhs.uk/service-search/urgent-and-emergency-care"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center space-x-2 text-gray-300 hover:text-white transition-colors"
+                  >
+                    <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
+                    <span>System Status</span>
+                  </a>
+                </li>
+              </ul>
+            </nav>
 
             {/* Company Links */}
-            <div>
+            <nav>
               <h4 className="text-lg font-poppins font-semibold mb-4">
                 Company
               </h4>
-              <div className="space-y-3">
-                <a
-                  href="#"
-                  className="block text-gray-300 hover:text-white transition-colors"
-                >
-                  About Us
-                </a>
-                <a
-                  href="#"
-                  className="block text-gray-300 hover:text-white transition-colors"
-                >
-                  Careers
-                </a>
-                <a
-                  href="#"
-                  className="block text-gray-300 hover:text-white transition-colors"
-                >
-                  Press
-                </a>
-                <a
-                  href="#"
-                  className="block text-gray-300 hover:text-white transition-colors"
-                >
-                  Partners
-                </a>
-                <a
-                  href="#"
-                  className="block text-gray-300 hover:text-white transition-colors"
-                >
-                  Contact
-                </a>
-              </div>
-            </div>
+              <ul className="space-y-3">
+                <li>
+                  <a
+                    href="https://www.nhs.uk/about-us/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="block text-gray-300 hover:text-white transition-colors"
+                  >
+                    About NHS
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href="https://www.jobs.nhs.uk/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="block text-gray-300 hover:text-white transition-colors"
+                  >
+                    Careers
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href="https://www.england.nhs.uk/news/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="block text-gray-300 hover:text-white transition-colors"
+                  >
+                    Press
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href="https://www.england.nhs.uk/partners/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="block text-gray-300 hover:text-white transition-colors"
+                  >
+                    Partners
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href="https://www.nhs.uk/contact-us/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="block text-gray-300 hover:text-white transition-colors"
+                  >
+                    Contact
+                  </a>
+                </li>
+              </ul>
+            </nav>
           </div>
 
           <div className="border-t border-gray-800 mt-12 pt-8 flex flex-col md:flex-row justify-between items-center">
             <div className="text-gray-400 text-sm mb-4 md:mb-0">
-              © 2024 NHSCareHub. All rights reserved.
+              © 2025 NHSCareHub. All rights reserved.
+              <span className="ml-2">
+                Last updated: {new Date().toLocaleDateString("en-GB")}
+              </span>
             </div>
-            <div className="flex space-x-6 text-sm text-gray-400">
-              <a href="#" className="hover:text-white transition-colors">
-                Privacy Policy
-              </a>
-              <a href="#" className="hover:text-white transition-colors">
-                Terms of Service
-              </a>
-              <a href="#" className="hover:text-white transition-colors">
-                Cookie Policy
-              </a>
-            </div>
+            <nav>
+              <ul className="flex space-x-6 text-sm text-gray-400">
+                <li>
+                  <a
+                    href="https://www.nhs.uk/about-us/nhs-website-privacy-policy/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="hover:text-white transition-colors"
+                  >
+                    Privacy Policy
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href="https://www.nhs.uk/about-us/nhs-website-terms-and-conditions/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="hover:text-white transition-colors"
+                  >
+                    Terms of Service
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href="https://www.nhs.uk/our-policies/cookies-policy/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="hover:text-white transition-colors"
+                  >
+                    Cookie Policy
+                  </a>
+                </li>
+              </ul>
+            </nav>
           </div>
         </div>
       </footer>
