@@ -230,10 +230,6 @@ export default function Navigation() {
               >
                 Sign In
               </Button>
-
-              <Link to="/contact">
-                <Button size="sm">Contact</Button>
-              </Link>
             </div>
           </div>
         </div>
