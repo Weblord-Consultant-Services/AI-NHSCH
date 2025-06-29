@@ -7,6 +7,7 @@ import Navigation from "@/components/Navigation";
 import TopBanner from "@/components/TopBanner";
 import Footer from "@/components/Footer";
 import CoreServicesShowreel from "@/components/CoreServicesShowreel";
+import ConnectModal from "@/components/ConnectModal";
 import {
   Users,
   Shield,
@@ -24,6 +25,7 @@ import {
 } from "lucide-react";
 
 export default function Index() {
+  const [isConnectModalOpen, setIsConnectModalOpen] = useState(false);
   const stats = [
     { icon: Users, value: "47,392", label: "Registered Healthcare Staff" },
     { icon: Shield, value: "1,247", label: "Compliance Documents" },
@@ -205,7 +207,7 @@ export default function Index() {
                   variant="outline"
                   size="lg"
                   className="text-lg px-8 py-4"
-                  onClick={() => handleDownloadPDF("Platform Overview")}
+                  onClick={() => setIsConnectModalOpen(true)}
                 >
                   <Download className="mr-2 w-5 h-5" />
                   Download Guide
@@ -443,6 +445,13 @@ export default function Index() {
       </section>
 
       <Footer />
+
+      {/* Connect Modal */}
+      <ConnectModal
+        isOpen={isConnectModalOpen}
+        onClose={() => setIsConnectModalOpen(false)}
+        initialMode="signup"
+      />
     </div>
   );
 }
