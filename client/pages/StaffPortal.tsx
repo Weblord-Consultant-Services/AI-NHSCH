@@ -2,7 +2,9 @@ import { useState, useEffect } from "react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
+import Navigation from "@/components/Navigation";
 import TopBanner from "@/components/TopBanner";
+import Footer from "@/components/Footer";
 import {
   Users,
   UserPlus,
@@ -175,6 +177,7 @@ export default function StaffPortal() {
   return (
     <div className="min-h-screen bg-gray-50">
       <TopBanner />
+      <Navigation />
 
       <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
         <div className="mb-8">
@@ -385,6 +388,8 @@ export default function StaffPortal() {
           </div>
         </div>
       </main>
+
+      <Footer />
     </div>
   );
 }
