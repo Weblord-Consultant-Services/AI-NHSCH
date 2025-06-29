@@ -4,6 +4,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
+import ConnectModal from "@/components/ConnectModal";
 import {
   Heart,
   Home,
@@ -17,6 +18,9 @@ import {
   MapPin,
   TrendingUp,
   Calendar,
+  Newspaper,
+  Info,
+  Phone,
 } from "lucide-react";
 
 interface AISearchResult {
@@ -34,12 +38,16 @@ export default function Navigation() {
   const [searchQuery, setSearchQuery] = useState("");
   const [searchResults, setSearchResults] = useState<AISearchResult[]>([]);
   const [isSearching, setIsSearching] = useState(false);
+  const [isConnectModalOpen, setIsConnectModalOpen] = useState(false);
 
   const navigationItems = [
     { path: "/", label: "Home", icon: Home },
     { path: "/staff-portal", label: "Staff Portal", icon: Users },
     { path: "/compliance", label: "Compliance", icon: Shield },
     { path: "/equipment", label: "Equipment", icon: Stethoscope },
+    { path: "/news", label: "News", icon: Newspaper },
+    { path: "/about", label: "About", icon: Info },
+    { path: "/contact", label: "Contact", icon: Phone },
   ];
 
   const simulateAISearch = async (query: string) => {
@@ -220,21 +228,14 @@ export default function Navigation() {
               <Button
                 variant="outline"
                 size="sm"
-                onClick={() =>
-                  window.open("https://www.nhs.uk/nhs-app/", "_blank")
-                }
+                onClick={() => setIsConnectModalOpen(true)}
               >
                 Sign In
               </Button>
 
-              <Button
-                size="sm"
-                onClick={() =>
-                  window.open("https://www.nhs.uk/contact-us/", "_blank")
-                }
-              >
-                Contact
-              </Button>
+              <Link to="/contact">
+                <Button size="sm">Contact</Button>
+              </Link>
             </div>
           </div>
         </div>
@@ -440,6 +441,13 @@ export default function Navigation() {
           </div>
         </div>
       )}
+
+      {/* Connect Modal */}
+      <ConnectModal
+        isOpen={isConnectModalOpen}
+        onClose={() => setIsConnectModalOpen(false)}
+        initialMode="signin"
+      />
     </>
   );
 }
