@@ -190,15 +190,12 @@ export default function Footer() {
             </h4>
             <ul className="space-y-3">
               <li>
-                <a
-                  href="https://www.nhs.uk/about-us/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex items-center space-x-2 text-gray-300 hover:text-white transition-colors"
+                <Link
+                  to="/about"
+                  className="text-gray-300 hover:text-white transition-colors"
                 >
-                  <span>About NHS</span>
-                  <ExternalLink className="w-3 h-3" />
-                </a>
+                  About NHSCareHub
+                </Link>
               </li>
               <li>
                 <a
@@ -234,15 +231,12 @@ export default function Footer() {
                 </a>
               </li>
               <li>
-                <a
-                  href="https://www.nhs.uk/contact-us/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex items-center space-x-2 text-gray-300 hover:text-white transition-colors"
+                <Link
+                  to="/contact"
+                  className="text-gray-300 hover:text-white transition-colors"
                 >
-                  <span>Contact</span>
-                  <ExternalLink className="w-3 h-3" />
-                </a>
+                  Contact
+                </Link>
               </li>
             </ul>
           </nav>
