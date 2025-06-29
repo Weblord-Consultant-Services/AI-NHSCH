@@ -1,7 +1,10 @@
 import { useState } from "react";
+import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
+import TopBanner from "@/components/TopBanner";
+import ShowreelCarousel from "@/components/ShowreelCarousel";
 import {
   Users,
   Shield,
@@ -21,6 +24,8 @@ import {
   BookOpen,
   Settings,
   UserCheck,
+  Download,
+  ExternalLink,
 } from "lucide-react";
 
 export default function Index() {
@@ -96,8 +101,32 @@ export default function Index() {
     },
   ];
 
+  const handleDownloadPDF = (type: string) => {
+    const pdfData = {
+      type,
+      generatedDate: new Date().toISOString(),
+      content: `NHS Care Hub ${type} - Comprehensive Healthcare Management Guide`,
+      lastUpdated: "2025",
+      version: "v2.1.0",
+    };
+
+    const blob = new Blob([JSON.stringify(pdfData, null, 2)], {
+      type: "application/json",
+    });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement("a");
+    a.href = url;
+    a.download = `nhs-${type.toLowerCase().replace(/\s+/g, "-")}-guide-2025.json`;
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+    URL.revokeObjectURL(url);
+  };
+
   return (
     <div className="min-h-screen bg-white">
+      <TopBanner />
+
       {/* Navigation */}
       <header className="sticky top-0 z-50 bg-white border-b border-gray-200">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -113,31 +142,62 @@ export default function Index() {
               </div>
             </div>
             <nav className="hidden md:flex items-center space-x-6">
-              <a href="#" className="text-primary font-medium">
+              <Link to="/" className="text-primary font-medium">
                 Home
-              </a>
-              <a href="#" className="text-gray-600 hover:text-gray-900">
+              </Link>
+              <Link
+                to="/dashboard"
+                className="text-gray-600 hover:text-gray-900"
+              >
                 Dashboard
-              </a>
-              <a href="#" className="text-gray-600 hover:text-gray-900">
+              </Link>
+              <Link
+                to="/staff-portal"
+                className="text-gray-600 hover:text-gray-900"
+              >
                 Staff Portal
-              </a>
-              <a href="#" className="text-gray-600 hover:text-gray-900">
+              </Link>
+              <Link
+                to="/compliance"
+                className="text-gray-600 hover:text-gray-900"
+              >
                 Compliance
-              </a>
-              <a href="#" className="text-gray-600 hover:text-gray-900">
+              </Link>
+              <Link
+                to="/equipment"
+                className="text-gray-600 hover:text-gray-900"
+              >
                 Equipment
-              </a>
-              <a href="#" className="text-gray-600 hover:text-gray-900">
+              </Link>
+              <Link
+                to="/inspections"
+                className="text-gray-600 hover:text-gray-900"
+              >
                 Inspections
-              </a>
-              <a href="#" className="text-gray-600 hover:text-gray-900">
+              </Link>
+              <Link
+                to="/resources"
+                className="text-gray-600 hover:text-gray-900"
+              >
                 Resources
-              </a>
-              <Button variant="outline" size="sm">
+              </Link>
+              <Button
+                variant="outline"
+                size="sm"
+                onClick={() =>
+                  window.open("https://www.nhs.uk/nhs-app/", "_blank")
+                }
+              >
                 Sign In
               </Button>
-              <Button size="sm">Contact</Button>
+              <Button
+                size="sm"
+                onClick={() =>
+                  window.open("https://www.nhs.uk/contact-us/", "_blank")
+                }
+              >
+                Contact
+              </Button>
             </nav>
           </div>
         </div>
@@ -220,6 +280,9 @@ export default function Index() {
         </div>
       </section>
 
+      {/* Showreel Carousel */}
+      <ShowreelCarousel />
+
       {/* Statistics Section */}
       <section className="py-16 bg-gray-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -288,12 +351,39 @@ export default function Index() {
                     </h4>
                     <p className="text-gray-600">{feature.description}</p>
                   </div>
-                  <Button
-                    variant="ghost"
-                    className="w-full justify-start p-0 h-auto text-primary hover:text-primary/80"
-                  >
-                    Learn More <ArrowRight className="ml-2 w-4 h-4" />
-                  </Button>
+                  <div className="flex space-x-2">
+                    <Button
+                      variant="ghost"
+                      className="flex-1 justify-start p-0 h-auto text-primary hover:text-primary/80"
+                      onClick={() => handleDownloadPDF(feature.title)}
+                    >
+                      <Download className="mr-2 w-4 h-4" />
+                      Download PDF
+                    </Button>
+                    <Button
+                      variant="ghost"
+                      size="sm"
+                      onClick={() => {
+                        if (feature.title === "Healthcare Staff Portal") {
+                          window.open("https://www.jobs.nhs.uk/", "_blank");
+                        } else if (feature.title === "Compliance Hub") {
+                          window.open(
+                            "https://www.england.nhs.uk/publication/",
+                            "_blank",
+                          );
+                        } else if (feature.title === "Equipment & PPE Store") {
+                          window.open(
+                            "https://www.nhssupplychain.nhs.uk/",
+                            "_blank",
+                          );
+                        } else {
+                          window.open("https://www.nhs.uk/", "_blank");
+                        }
+                      }}
+                    >
+                      <ExternalLink className="w-4 h-4" />
+                    </Button>
+                  </div>
                 </CardContent>
               </Card>
             ))}
