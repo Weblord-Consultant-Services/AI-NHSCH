@@ -3,8 +3,10 @@ import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
+import Navigation from "@/components/Navigation";
 import TopBanner from "@/components/TopBanner";
-import ShowreelCarousel from "@/components/ShowreelCarousel";
+import Footer from "@/components/Footer";
+import CoreServicesShowreel from "@/components/CoreServicesShowreel";
 import {
   Users,
   Shield,
@@ -12,68 +14,82 @@ import {
   TrendingUp,
   Star,
   CheckCircle,
-  Phone,
-  Mail,
-  MapPin,
   ArrowRight,
-  ChevronLeft,
-  ChevronRight,
   Heart,
-  Activity,
-  FileText,
-  BookOpen,
-  Settings,
-  UserCheck,
+  Stethoscope,
   Download,
   ExternalLink,
+  MapPin,
+  Phone,
 } from "lucide-react";
 
 export default function Index() {
-  const [currentSlide, setCurrentSlide] = useState(0);
-
   const stats = [
-    { icon: Users, value: "2,500+", label: "Healthcare Professionals" },
-    { icon: Shield, value: "98.5%", label: "Compliance Rate" },
-    { icon: Clock, value: "< 2hrs", label: "Average Response Time" },
-    { icon: TrendingUp, value: "500+", label: "Organizations Served" },
+    { icon: Users, value: "47,392", label: "Registered Healthcare Staff" },
+    { icon: Shield, value: "1,247", label: "Compliance Documents" },
+    { icon: Stethoscope, value: "15,683", label: "Equipment Listed" },
+    { icon: TrendingUp, value: "98.7%", label: "Success Rate" },
   ];
 
-  const features = [
+  const coreServices = [
     {
-      title: "Healthcare Staff Portal",
-      description: "Comprehensive staff management and scheduling system",
-      icon: UserCheck,
-      featured: true,
+      title: "Staff Recruitment Portal",
+      description:
+        "Connect with qualified healthcare professionals across the UK",
+      icon: Users,
+      href: "/staff-portal",
+      color: "from-blue-500 to-blue-600",
+      stats: [
+        "2,847 Active Jobs",
+        "47,392 Registered Staff",
+        "89% Success Rate",
+      ],
     },
     {
-      title: "Compliance Hub",
-      description: "Regulatory compliance tracking and reporting",
+      title: "Compliance Documentation",
+      description: "Access latest NHS guidelines and regulatory documents",
       icon: Shield,
-      verified: true,
+      href: "/compliance",
+      color: "from-green-500 to-green-600",
+      stats: ["1,247 Documents", "98.7% Compliance", "Real-time Updates"],
     },
     {
-      title: "Equipment & PPE Store",
-      description: "Medical equipment and PPE inventory management",
-      icon: Settings,
-      featured: false,
+      title: "Equipment Marketplace",
+      description: "Buy and sell medical equipment from trusted suppliers",
+      icon: Stethoscope,
+      href: "/equipment",
+      color: "from-purple-500 to-purple-600",
+      stats: ["15,683 Items", "892 Suppliers", "NHS Approved"],
+    },
+  ];
+
+  const healthcareCentres = [
+    {
+      name: "Royal London Hospital",
+      type: "Major Trauma Centre",
+      location: "Whitechapel, London",
+      rating: 4.8,
+      services: ["Emergency Care", "Trauma Surgery", "Cardiology"],
+      phone: "+44 20 7377 7000",
+      specialties: "Trauma, Emergency Medicine, Cardiology",
     },
     {
-      title: "Ofsted Inspections",
-      description: "Inspection management and documentation",
-      icon: FileText,
-      featured: false,
+      name: "Addenbrooke's Hospital",
+      type: "Teaching Hospital",
+      location: "Cambridge",
+      rating: 4.9,
+      services: ["Cancer Care", "Neurosurgery", "Transplants"],
+      phone: "+44 1223 245151",
+      specialties: "Oncology, Neurosurgery, Organ Transplants",
     },
     {
-      title: "Treatment Resources",
-      description: "Clinical guidelines and treatment protocols",
-      icon: BookOpen,
-      featured: false,
-    },
-    {
-      title: "Document Management",
-      description: "Secure document storage and sharing platform",
-      icon: FileText,
-      featured: false,
+      name: "Birmingham Children's Hospital",
+      type: "Specialist Children's Hospital",
+      location: "Birmingham",
+      rating: 4.7,
+      services: ["Paediatrics", "Child Surgery", "NICU"],
+      phone: "+44 121 333 9999",
+      specialties: "Paediatric Care, Child Development, Emergency",
     },
   ];
 
@@ -81,22 +97,25 @@ export default function Index() {
     {
       name: "Dr. Sarah Mitchell",
       role: "Clinical Director",
+      hospital: "Manchester Royal Infirmary",
       content:
-        "NHSCareHub has transformed how we manage patient care and compliance. The platform is intuitive and saves us hours every week.",
+        "NHSCareHub has transformed how we manage staffing and compliance. The platform saves us hours every week.",
       rating: 5,
     },
     {
       name: "James Thompson",
-      role: "Hospital Administrator",
+      role: "Equipment Manager",
+      hospital: "Edinburgh Royal Hospital",
       content:
-        "The comprehensive reporting features have made our Ofsted preparations seamless. Highly recommended for healthcare organizations.",
+        "The equipment marketplace is incredible - we've saved thousands on medical supplies while maintaining quality.",
       rating: 5,
     },
     {
       name: "Dr. Emily Chen",
-      role: "General Practitioner",
+      role: "Compliance Officer",
+      hospital: "Cardiff University Hospital",
       content:
-        "Access to treatment resources and equipment management in one platform has streamlined our entire workflow.",
+        "Real-time compliance tracking and instant access to documentation has made our audits seamless.",
       rating: 5,
     },
   ];
@@ -126,82 +145,7 @@ export default function Index() {
   return (
     <div className="min-h-screen bg-white">
       <TopBanner />
-
-      {/* Navigation */}
-      <header className="sticky top-0 z-50 bg-white border-b border-gray-200">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex justify-between items-center h-16">
-            <div className="flex items-center space-x-8">
-              <div className="flex items-center space-x-2">
-                <div className="w-8 h-8 bg-primary rounded-full flex items-center justify-center">
-                  <Heart className="w-5 h-5 text-white" />
-                </div>
-                <span className="text-xl font-poppins font-bold text-gray-900">
-                  NHSCareHub
-                </span>
-              </div>
-            </div>
-            <nav className="hidden md:flex items-center space-x-6">
-              <Link to="/" className="text-primary font-medium">
-                Home
-              </Link>
-              <Link
-                to="/dashboard"
-                className="text-gray-600 hover:text-gray-900"
-              >
-                Dashboard
-              </Link>
-              <Link
-                to="/staff-portal"
-                className="text-gray-600 hover:text-gray-900"
-              >
-                Staff Portal
-              </Link>
-              <Link
-                to="/compliance"
-                className="text-gray-600 hover:text-gray-900"
-              >
-                Compliance
-              </Link>
-              <Link
-                to="/equipment"
-                className="text-gray-600 hover:text-gray-900"
-              >
-                Equipment
-              </Link>
-              <Link
-                to="/inspections"
-                className="text-gray-600 hover:text-gray-900"
-              >
-                Inspections
-              </Link>
-              <Link
-                to="/resources"
-                className="text-gray-600 hover:text-gray-900"
-              >
-                Resources
-              </Link>
-              <Button
-                variant="outline"
-                size="sm"
-                onClick={() =>
-                  window.open("https://www.nhs.uk/nhs-app/", "_blank")
-                }
-              >
-                Sign In
-              </Button>
-              <Button
-                size="sm"
-                onClick={() =>
-                  window.open("https://www.nhs.uk/contact-us/", "_blank")
-                }
-              >
-                Contact
-              </Button>
-            </nav>
-          </div>
-        </div>
-      </header>
+      <Navigation />
 
       {/* Hero Section */}
       <section className="relative bg-gradient-to-br from-blue-50 to-green-50 py-20">
@@ -220,12 +164,12 @@ export default function Index() {
                   NHSCareHub
                 </h1>
                 <h2 className="text-3xl font-poppins font-semibold text-gray-700">
-                  Digital Healthcare Management Platform
+                  All-in-One Healthcare Platform
                 </h2>
                 <p className="text-xl text-gray-600 leading-relaxed">
-                  Streamline healthcare operations with our comprehensive
-                  digital platform. Manage staff, ensure compliance, track
-                  equipment, and deliver exceptional patient care.
+                  Streamline healthcare operations with staff recruitment,
+                  compliance management, and equipment sourcing - all in one
+                  comprehensive platform.
                 </p>
               </div>
 
@@ -233,27 +177,40 @@ export default function Index() {
                 <div className="flex items-center space-x-3">
                   <CheckCircle className="w-5 h-5 text-secondary" />
                   <span className="text-gray-700">
-                    NHS-approved and certified platform
+                    Real-time staff recruitment and matching
                   </span>
                 </div>
                 <div className="flex items-center space-x-3">
                   <CheckCircle className="w-5 h-5 text-secondary" />
                   <span className="text-gray-700">
-                    Real-time compliance monitoring
+                    Comprehensive compliance documentation
                   </span>
                 </div>
                 <div className="flex items-center space-x-3">
                   <CheckCircle className="w-5 h-5 text-secondary" />
                   <span className="text-gray-700">
-                    Integrated staff management system
+                    NHS-approved equipment marketplace
                   </span>
                 </div>
               </div>
 
-              <Button size="lg" className="text-lg px-8 py-4">
-                Get Started Today
-                <ArrowRight className="ml-2 w-5 h-5" />
-              </Button>
+              <div className="flex space-x-4">
+                <Link to="/staff-portal">
+                  <Button size="lg" className="text-lg px-8 py-4">
+                    Explore Services
+                    <ArrowRight className="ml-2 w-5 h-5" />
+                  </Button>
+                </Link>
+                <Button
+                  variant="outline"
+                  size="lg"
+                  className="text-lg px-8 py-4"
+                  onClick={() => handleDownloadPDF("Platform Overview")}
+                >
+                  <Download className="mr-2 w-5 h-5" />
+                  Download Guide
+                </Button>
+              </div>
             </div>
 
             <div className="grid grid-cols-2 gap-4">
@@ -280,238 +237,162 @@ export default function Index() {
         </div>
       </section>
 
-      {/* Showreel Carousel */}
-      <ShowreelCarousel />
+      {/* Core Services Showreel */}
+      <CoreServicesShowreel />
 
-      {/* Statistics Section */}
-      <section className="py-16 bg-gray-50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-12">
-            <h3 className="text-3xl font-poppins font-bold text-gray-900 mb-4">
-              Trusted by Healthcare Professionals Nationwide
-            </h3>
-            <p className="text-lg text-gray-600">
-              Our platform serves thousands of healthcare providers across the
-              UK
-            </p>
-          </div>
-
-          <div className="grid md:grid-cols-4 gap-8">
-            {stats.map((stat, index) => (
-              <div key={index} className="text-center">
-                <div className="w-16 h-16 bg-white rounded-2xl shadow-lg flex items-center justify-center mx-auto mb-4">
-                  <stat.icon className="w-8 h-8 text-primary" />
-                </div>
-                <div className="text-3xl font-poppins font-bold text-gray-900 mb-2">
-                  {stat.value}
-                </div>
-                <div className="text-gray-600">{stat.label}</div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Features Section */}
+      {/* Core Services Overview */}
       <section className="py-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <h3 className="text-4xl font-poppins font-bold text-gray-900 mb-4">
-              Comprehensive Healthcare Solutions
+              Our Core Healthcare Services
             </h3>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              Everything you need to manage modern healthcare operations in one
-              integrated platform
+              Three essential services powering healthcare excellence across the
+              UK
             </p>
           </div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
-            {features.map((feature, index) => (
-              <Card
-                key={index}
-                className={`p-6 border-0 shadow-lg hover:shadow-xl transition-shadow ${
-                  feature.featured ? "ring-2 ring-primary" : ""
-                }`}
-              >
-                <CardContent className="p-0 space-y-4">
-                  <div className="flex items-center justify-between">
-                    <div className="w-12 h-12 bg-primary/10 rounded-xl flex items-center justify-center">
-                      <feature.icon className="w-6 h-6 text-primary" />
+          <div className="grid md:grid-cols-3 gap-8">
+            {coreServices.map((service, index) => {
+              const Icon = service.icon;
+
+              return (
+                <Link key={index} to={service.href}>
+                  <Card className="h-full hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
+                    <CardContent className="p-8">
+                      <div className="space-y-6">
+                        <div
+                          className={`w-16 h-16 bg-gradient-to-r ${service.color} rounded-2xl flex items-center justify-center mx-auto`}
+                        >
+                          <Icon className="w-8 h-8 text-white" />
+                        </div>
+
+                        <div className="text-center">
+                          <h4 className="text-2xl font-poppins font-bold text-gray-900 mb-3">
+                            {service.title}
+                          </h4>
+                          <p className="text-gray-600 mb-6">
+                            {service.description}
+                          </p>
+                        </div>
+
+                        <div className="space-y-2">
+                          {service.stats.map((stat, statIndex) => (
+                            <div
+                              key={statIndex}
+                              className="flex items-center space-x-2"
+                            >
+                              <CheckCircle className="w-4 h-4 text-green-500" />
+                              <span className="text-sm text-gray-600">
+                                {stat}
+                              </span>
+                            </div>
+                          ))}
+                        </div>
+
+                        <Button className="w-full">
+                          Access {service.title.split(" ")[0]}
+                          <ArrowRight className="ml-2 w-4 h-4" />
+                        </Button>
+                      </div>
+                    </CardContent>
+                  </Card>
+                </Link>
+              );
+            })}
+          </div>
+        </div>
+      </section>
+
+      {/* Healthcare Centres Section */}
+      <section className="py-20 bg-gray-50">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-16">
+            <h3 className="text-4xl font-poppins font-bold text-gray-900 mb-4">
+              Trusted Healthcare Centres
+            </h3>
+            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+              Connect with leading healthcare facilities across the UK
+            </p>
+          </div>
+
+          <div className="grid md:grid-cols-3 gap-8">
+            {healthcareCentres.map((centre, index) => (
+              <Card key={index} className="hover:shadow-lg transition-shadow">
+                <CardContent className="p-6">
+                  <div className="space-y-4">
+                    <div>
+                      <h4 className="text-xl font-semibold text-gray-900 mb-1">
+                        {centre.name}
+                      </h4>
+                      <Badge variant="secondary" className="mb-2">
+                        {centre.type}
+                      </Badge>
                     </div>
-                    {feature.featured && (
-                      <Badge className="bg-primary">Featured</Badge>
-                    )}
-                    {feature.verified && (
-                      <Badge className="bg-secondary">Verified</Badge>
-                    )}
-                  </div>
-                  <div>
-                    <h4 className="text-xl font-poppins font-semibold text-gray-900 mb-2">
-                      {feature.title}
-                    </h4>
-                    <p className="text-gray-600">{feature.description}</p>
-                  </div>
-                  <div className="flex space-x-2">
-                    <Button
-                      variant="ghost"
-                      className="flex-1 justify-start p-0 h-auto text-primary hover:text-primary/80"
-                      onClick={() => handleDownloadPDF(feature.title)}
-                    >
-                      <Download className="mr-2 w-4 h-4" />
-                      Download PDF
-                    </Button>
-                    <Button
-                      variant="ghost"
-                      size="sm"
-                      onClick={() => {
-                        if (feature.title === "Healthcare Staff Portal") {
-                          window.open("https://www.jobs.nhs.uk/", "_blank");
-                        } else if (feature.title === "Compliance Hub") {
-                          window.open(
-                            "https://www.england.nhs.uk/publication/",
-                            "_blank",
-                          );
-                        } else if (feature.title === "Equipment & PPE Store") {
-                          window.open(
-                            "https://www.nhssupplychain.nhs.uk/",
-                            "_blank",
-                          );
-                        } else {
-                          window.open("https://www.nhs.uk/", "_blank");
+
+                    <div className="flex items-center space-x-2 text-gray-600">
+                      <MapPin className="w-4 h-4" />
+                      <span>{centre.location}</span>
+                    </div>
+
+                    <div className="flex items-center space-x-2">
+                      <Star className="w-4 h-4 text-yellow-500 fill-current" />
+                      <span className="font-semibold">{centre.rating}</span>
+                      <span className="text-gray-600">rating</span>
+                    </div>
+
+                    <div>
+                      <h5 className="font-semibold text-gray-900 text-sm mb-2">
+                        Specialties:
+                      </h5>
+                      <p className="text-sm text-gray-600">
+                        {centre.specialties}
+                      </p>
+                    </div>
+
+                    <div className="flex space-x-2">
+                      <Button
+                        variant="outline"
+                        size="sm"
+                        className="flex-1"
+                        onClick={() =>
+                          window.open(`tel:${centre.phone}`, "_self")
                         }
-                      }}
-                    >
-                      <ExternalLink className="w-4 h-4" />
-                    </Button>
+                      >
+                        <Phone className="w-4 h-4 mr-2" />
+                        Contact
+                      </Button>
+                      <Button
+                        size="sm"
+                        className="flex-1"
+                        onClick={() =>
+                          window.open(
+                            "https://www.nhs.uk/service-search/",
+                            "_blank",
+                          )
+                        }
+                      >
+                        <ExternalLink className="w-4 h-4 mr-2" />
+                        View Details
+                      </Button>
+                    </div>
                   </div>
                 </CardContent>
               </Card>
             ))}
           </div>
 
-          {/* CTA Card */}
-          <Card className="p-8 bg-gradient-to-r from-primary to-secondary text-white text-center">
-            <CardContent className="p-0 space-y-4">
-              <h4 className="text-2xl font-poppins font-bold">
-                Ready to Transform Your Healthcare Operations?
-              </h4>
-              <p className="text-lg opacity-90">
-                Join thousands of healthcare professionals already using
-                NHSCareHub
-              </p>
-              <Button
-                size="lg"
-                variant="secondary"
-                className="bg-white text-primary hover:bg-gray-100"
-              >
-                Start Your Free Trial
-              </Button>
-            </CardContent>
-          </Card>
-        </div>
-      </section>
-
-      {/* Benefits Section */}
-      <section className="py-20 bg-gray-50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid lg:grid-cols-2 gap-16 items-center">
-            <div className="space-y-8">
-              <div>
-                <h3 className="text-4xl font-poppins font-bold text-gray-900 mb-6">
-                  Why Choose NHSCareHub?
-                </h3>
-                <div className="space-y-6">
-                  <div className="flex items-start space-x-4">
-                    <div className="w-8 h-8 bg-secondary rounded-full flex items-center justify-center flex-shrink-0 mt-1">
-                      <CheckCircle className="w-5 h-5 text-white" />
-                    </div>
-                    <div>
-                      <h4 className="text-lg font-semibold text-gray-900 mb-1">
-                        NHS Compliance Ready
-                      </h4>
-                      <p className="text-gray-600">
-                        Built specifically for NHS standards and regulatory
-                        requirements
-                      </p>
-                    </div>
-                  </div>
-                  <div className="flex items-start space-x-4">
-                    <div className="w-8 h-8 bg-secondary rounded-full flex items-center justify-center flex-shrink-0 mt-1">
-                      <CheckCircle className="w-5 h-5 text-white" />
-                    </div>
-                    <div>
-                      <h4 className="text-lg font-semibold text-gray-900 mb-1">
-                        Real-time Analytics
-                      </h4>
-                      <p className="text-gray-600">
-                        Monitor performance and compliance metrics in real-time
-                      </p>
-                    </div>
-                  </div>
-                  <div className="flex items-start space-x-4">
-                    <div className="w-8 h-8 bg-secondary rounded-full flex items-center justify-center flex-shrink-0 mt-1">
-                      <CheckCircle className="w-5 h-5 text-white" />
-                    </div>
-                    <div>
-                      <h4 className="text-lg font-semibold text-gray-900 mb-1">
-                        Secure & Reliable
-                      </h4>
-                      <p className="text-gray-600">
-                        Enterprise-grade security with 99.9% uptime guarantee
-                      </p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <Button size="lg" className="text-lg px-8">
-                Discover All Features
-              </Button>
-            </div>
-
-            <Card className="p-8 border-0 shadow-xl">
-              <CardContent className="p-0 space-y-6">
-                <div className="text-center">
-                  <div className="text-4xl font-poppins font-bold text-primary mb-2">
-                    98.5%
-                  </div>
-                  <div className="text-lg font-semibold text-gray-900">
-                    Compliance Rate
-                  </div>
-                </div>
-                <div className="space-y-4">
-                  <div className="flex justify-between items-center">
-                    <span className="text-gray-600">Staff Management</span>
-                    <span className="font-semibold">99.2%</span>
-                  </div>
-                  <div className="w-full bg-gray-200 rounded-full h-2">
-                    <div
-                      className="bg-primary h-2 rounded-full"
-                      style={{ width: "99.2%" }}
-                    ></div>
-                  </div>
-                  <div className="flex justify-between items-center">
-                    <span className="text-gray-600">Equipment Tracking</span>
-                    <span className="font-semibold">97.8%</span>
-                  </div>
-                  <div className="w-full bg-gray-200 rounded-full h-2">
-                    <div
-                      className="bg-secondary h-2 rounded-full"
-                      style={{ width: "97.8%" }}
-                    ></div>
-                  </div>
-                  <div className="flex justify-between items-center">
-                    <span className="text-gray-600">Documentation</span>
-                    <span className="font-semibold">98.5%</span>
-                  </div>
-                  <div className="w-full bg-gray-200 rounded-full h-2">
-                    <div
-                      className="bg-primary h-2 rounded-full"
-                      style={{ width: "98.5%" }}
-                    ></div>
-                  </div>
-                </div>
-              </CardContent>
-            </Card>
+          <div className="text-center mt-12">
+            <Button
+              size="lg"
+              onClick={() =>
+                window.open("https://www.nhs.uk/service-search/", "_blank")
+              }
+            >
+              <ExternalLink className="w-5 h-5 mr-2" />
+              Search All Healthcare Centres
+            </Button>
           </div>
         </div>
       </section>
@@ -530,8 +411,8 @@ export default function Index() {
 
           <div className="grid md:grid-cols-3 gap-8">
             {testimonials.map((testimonial, index) => (
-              <Card key={index} className="p-6 border-0 shadow-lg">
-                <CardContent className="p-0 space-y-4">
+              <Card key={index} className="border-0 shadow-lg">
+                <CardContent className="p-6 space-y-4">
                   <div className="flex items-center space-x-1 mb-4">
                     {[...Array(testimonial.rating)].map((_, i) => (
                       <Star
@@ -550,6 +431,9 @@ export default function Index() {
                     <div className="text-sm text-gray-600">
                       {testimonial.role}
                     </div>
+                    <div className="text-sm text-gray-500">
+                      {testimonial.hospital}
+                    </div>
                   </div>
                 </CardContent>
               </Card>
@@ -558,293 +442,7 @@ export default function Index() {
         </div>
       </section>
 
-      {/* Footer */}
-      <footer className="bg-gray-900 text-white py-16" role="contentinfo">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid md:grid-cols-2 lg:grid-cols-5 gap-8">
-            {/* Brand Column */}
-            <div className="lg:col-span-2 space-y-6">
-              <div className="flex items-center space-x-2">
-                <div className="w-8 h-8 bg-primary rounded-full flex items-center justify-center">
-                  <Heart className="w-5 h-5 text-white" />
-                </div>
-                <span className="text-xl font-poppins font-bold">
-                  NHSCareHub
-                </span>
-              </div>
-              <p className="text-gray-300 max-w-md">
-                The comprehensive digital healthcare management platform trusted
-                by thousands of healthcare professionals across the UK since
-                2025.
-              </p>
-              <address className="space-y-3 not-italic">
-                <div className="flex items-center space-x-3">
-                  <Phone className="w-5 h-5 text-primary" />
-                  <a
-                    href="tel:+442034888343"
-                    className="text-gray-300 hover:text-white transition-colors"
-                  >
-                    +44 203 488 8343
-                  </a>
-                </div>
-                <div className="flex items-center space-x-3">
-                  <Mail className="w-5 h-5 text-primary" />
-                  <a
-                    href="mailto:support@nhscarehub.uk"
-                    className="text-gray-300 hover:text-white transition-colors"
-                  >
-                    support@nhscarehub.uk
-                  </a>
-                </div>
-                <div className="flex items-center space-x-3">
-                  <MapPin className="w-5 h-5 text-primary" />
-                  <span className="text-gray-300">London, United Kingdom</span>
-                </div>
-              </address>
-
-              {/* Certifications */}
-              <div className="space-y-2">
-                <h5 className="text-sm font-semibold text-gray-200">
-                  Certifications
-                </h5>
-                <div className="flex flex-wrap gap-2">
-                  <Badge
-                    variant="secondary"
-                    className="bg-green-100 text-green-800"
-                  >
-                    ISO 27001
-                  </Badge>
-                  <Badge
-                    variant="secondary"
-                    className="bg-blue-100 text-blue-800"
-                  >
-                    GDPR Compliant
-                  </Badge>
-                  <Badge
-                    variant="secondary"
-                    className="bg-purple-100 text-purple-800"
-                  >
-                    Cyber Essentials+
-                  </Badge>
-                </div>
-              </div>
-            </div>
-
-            {/* Platform Links */}
-            <nav>
-              <h4 className="text-lg font-poppins font-semibold mb-4">
-                Platform
-              </h4>
-              <ul className="space-y-3">
-                <li>
-                  <Link
-                    to="/dashboard"
-                    className="block text-gray-300 hover:text-white transition-colors"
-                  >
-                    Dashboard
-                  </Link>
-                </li>
-                <li>
-                  <Link
-                    to="/staff-portal"
-                    className="block text-gray-300 hover:text-white transition-colors"
-                  >
-                    Staff Portal
-                  </Link>
-                </li>
-                <li>
-                  <Link
-                    to="/compliance"
-                    className="block text-gray-300 hover:text-white transition-colors"
-                  >
-                    Compliance Hub
-                  </Link>
-                </li>
-                <li>
-                  <a
-                    href="https://www.nhssupplychain.nhs.uk/"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="block text-gray-300 hover:text-white transition-colors"
-                  >
-                    Equipment Store
-                  </a>
-                </li>
-                <li>
-                  <Link
-                    to="/inspections"
-                    className="block text-gray-300 hover:text-white transition-colors"
-                  >
-                    Inspections
-                  </Link>
-                </li>
-              </ul>
-            </nav>
-
-            {/* Support Links */}
-            <nav>
-              <h4 className="text-lg font-poppins font-semibold mb-4">
-                Support
-              </h4>
-              <ul className="space-y-3">
-                <li>
-                  <a
-                    href="https://www.nhs.uk/using-the-nhs/about-the-nhs/contact-us/"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="block text-gray-300 hover:text-white transition-colors"
-                  >
-                    Help Center
-                  </a>
-                </li>
-                <li>
-                  <a
-                    href="https://digital.nhs.uk/"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="block text-gray-300 hover:text-white transition-colors"
-                  >
-                    Documentation
-                  </a>
-                </li>
-                <li>
-                  <a
-                    href="https://www.healthcareers.nhs.uk/"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="block text-gray-300 hover:text-white transition-colors"
-                  >
-                    Training
-                  </a>
-                </li>
-                <li>
-                  <a
-                    href="https://digital.nhs.uk/developer"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="block text-gray-300 hover:text-white transition-colors"
-                  >
-                    API Reference
-                  </a>
-                </li>
-                <li>
-                  <a
-                    href="https://www.nhs.uk/service-search/urgent-and-emergency-care"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="flex items-center space-x-2 text-gray-300 hover:text-white transition-colors"
-                  >
-                    <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
-                    <span>System Status</span>
-                  </a>
-                </li>
-              </ul>
-            </nav>
-
-            {/* Company Links */}
-            <nav>
-              <h4 className="text-lg font-poppins font-semibold mb-4">
-                Company
-              </h4>
-              <ul className="space-y-3">
-                <li>
-                  <a
-                    href="https://www.nhs.uk/about-us/"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="block text-gray-300 hover:text-white transition-colors"
-                  >
-                    About NHS
-                  </a>
-                </li>
-                <li>
-                  <a
-                    href="https://www.jobs.nhs.uk/"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="block text-gray-300 hover:text-white transition-colors"
-                  >
-                    Careers
-                  </a>
-                </li>
-                <li>
-                  <a
-                    href="https://www.england.nhs.uk/news/"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="block text-gray-300 hover:text-white transition-colors"
-                  >
-                    Press
-                  </a>
-                </li>
-                <li>
-                  <a
-                    href="https://www.england.nhs.uk/partners/"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="block text-gray-300 hover:text-white transition-colors"
-                  >
-                    Partners
-                  </a>
-                </li>
-                <li>
-                  <a
-                    href="https://www.nhs.uk/contact-us/"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="block text-gray-300 hover:text-white transition-colors"
-                  >
-                    Contact
-                  </a>
-                </li>
-              </ul>
-            </nav>
-          </div>
-
-          <div className="border-t border-gray-800 mt-12 pt-8 flex flex-col md:flex-row justify-between items-center">
-            <div className="text-gray-400 text-sm mb-4 md:mb-0">
-              © 2025 NHSCareHub. All rights reserved.
-              <span className="ml-2">
-                Last updated: {new Date().toLocaleDateString("en-GB")}
-              </span>
-            </div>
-            <nav>
-              <ul className="flex space-x-6 text-sm text-gray-400">
-                <li>
-                  <a
-                    href="https://www.nhs.uk/about-us/nhs-website-privacy-policy/"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="hover:text-white transition-colors"
-                  >
-                    Privacy Policy
-                  </a>
-                </li>
-                <li>
-                  <a
-                    href="https://www.nhs.uk/about-us/nhs-website-terms-and-conditions/"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="hover:text-white transition-colors"
-                  >
-                    Terms of Service
-                  </a>
-                </li>
-                <li>
-                  <a
-                    href="https://www.nhs.uk/our-policies/cookies-policy/"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="hover:text-white transition-colors"
-                  >
-                    Cookie Policy
-                  </a>
-                </li>
-              </ul>
-            </nav>
-          </div>
-        </div>
-      </footer>
+      <Footer />
     </div>
   );
 }
