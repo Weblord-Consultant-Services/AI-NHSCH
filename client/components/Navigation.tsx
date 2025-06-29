@@ -46,8 +46,6 @@ export default function Navigation() {
     { path: "/compliance", label: "Compliance", icon: Shield },
     { path: "/equipment", label: "Equipment", icon: Stethoscope },
     { path: "/news", label: "News", icon: Newspaper },
-    { path: "/about", label: "About", icon: Info },
-    { path: "/contact", label: "Contact", icon: Phone },
   ];
 
   const simulateAISearch = async (query: string) => {
