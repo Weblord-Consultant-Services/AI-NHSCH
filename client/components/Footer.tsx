@@ -262,34 +262,28 @@ export default function Footer() {
           <nav>
             <ul className="flex space-x-6 text-sm text-gray-400">
               <li>
-                <a
-                  href="https://www.nhs.uk/about-us/nhs-website-privacy-policy/"
-                  target="_blank"
-                  rel="noopener noreferrer"
+                <Link
+                  to="/privacy-policy"
                   className="hover:text-white transition-colors"
                 >
                   Privacy Policy
-                </a>
+                </Link>
               </li>
               <li>
-                <a
-                  href="https://www.nhs.uk/about-us/nhs-website-terms-and-conditions/"
-                  target="_blank"
-                  rel="noopener noreferrer"
+                <Link
+                  to="/terms-of-service"
                   className="hover:text-white transition-colors"
                 >
                   Terms of Service
-                </a>
+                </Link>
               </li>
               <li>
-                <a
-                  href="https://www.nhs.uk/our-policies/cookies-policy/"
-                  target="_blank"
-                  rel="noopener noreferrer"
+                <Link
+                  to="/cookie-policy"
                   className="hover:text-white transition-colors"
                 >
                   Cookie Policy
-                </a>
+                </Link>
               </li>
             </ul>
           </nav>
