@@ -8,8 +8,6 @@ import TopBanner from "@/components/TopBanner";
 import Footer from "@/components/Footer";
 import CoreServicesShowreel from "@/components/CoreServicesShowreel";
 import ConnectModal from "@/components/ConnectModal";
-import LiveChatbot from "@/components/LiveChatbot";
-import ScrollToTop from "@/components/ScrollToTop";
 import {
   Users,
   Shield,
@@ -454,12 +452,6 @@ export default function Index() {
         onClose={() => setIsConnectModalOpen(false)}
         initialMode="signup"
       />
-
-      {/* Live Chatbot */}
-      <LiveChatbot />
-
-      {/* Scroll to Top */}
-      <ScrollToTop />
     </div>
   );
 }
