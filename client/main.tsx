@@ -5,6 +5,7 @@ import { createRoot } from "react-dom/client";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import Layout from "@/components/Layout";
 import Index from "./pages/Index";
 import StaffPortal from "./pages/StaffPortal";
 import Compliance from "./pages/Compliance";
@@ -29,25 +30,27 @@ const App = () => (
     <Toaster />
     <Sonner />
     <BrowserRouter>
-      <Routes>
-        <Route path="/" element={<Index />} />
-        <Route path="/staff-portal" element={<StaffPortal />} />
-        <Route path="/compliance" element={<Compliance />} />
-        <Route path="/equipment" element={<Equipment />} />
-        <Route path="/news" element={<News />} />
-        <Route path="/about" element={<About />} />
-        <Route path="/contact" element={<Contact />} />
-        <Route path="/help-center" element={<HelpCenter />} />
-        <Route path="/documentation" element={<Documentation />} />
-        <Route path="/training" element={<Training />} />
-        <Route path="/api-reference" element={<APIReference />} />
-        <Route path="/system-status" element={<SystemStatus />} />
-        <Route path="/privacy-policy" element={<PrivacyPolicy />} />
-        <Route path="/terms-of-service" element={<TermsOfService />} />
-        <Route path="/cookie-policy" element={<CookiePolicy />} />
-        {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
-        <Route path="*" element={<NotFound />} />
-      </Routes>
+      <Layout>
+        <Routes>
+          <Route path="/" element={<Index />} />
+          <Route path="/staff-portal" element={<StaffPortal />} />
+          <Route path="/compliance" element={<Compliance />} />
+          <Route path="/equipment" element={<Equipment />} />
+          <Route path="/news" element={<News />} />
+          <Route path="/about" element={<About />} />
+          <Route path="/contact" element={<Contact />} />
+          <Route path="/help-center" element={<HelpCenter />} />
+          <Route path="/documentation" element={<Documentation />} />
+          <Route path="/training" element={<Training />} />
+          <Route path="/api-reference" element={<APIReference />} />
+          <Route path="/system-status" element={<SystemStatus />} />
+          <Route path="/privacy-policy" element={<PrivacyPolicy />} />
+          <Route path="/terms-of-service" element={<TermsOfService />} />
+          <Route path="/cookie-policy" element={<CookiePolicy />} />
+          {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
+          <Route path="*" element={<NotFound />} />
+        </Routes>
+      </Layout>
     </BrowserRouter>
   </QueryClientProvider>
 );
