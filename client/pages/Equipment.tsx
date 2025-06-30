@@ -62,6 +62,9 @@ export default function Equipment() {
   const [searchTerm, setSearchTerm] = useState("");
   const [selectedCategory, setSelectedCategory] = useState<string>("all");
   const [priceRange, setPriceRange] = useState<string>("all");
+  const [searchResults, setSearchResults] = useState<EquipmentItem[]>([]);
+  const [showSearchResults, setShowSearchResults] = useState(false);
+  const [selectedSupplier, setSelectedSupplier] = useState<any>(null);
   const [equipmentStats, setEquipmentStats] = useState({
     totalItems: 15683,
     activeSuppliers: 892,
@@ -125,7 +128,9 @@ export default function Equipment() {
           "Temperature measurement",
         ],
         certifications: ["CE Mark", "NHS Approved", "FDA Cleared"],
-        images: ["/placeholder.svg"],
+        images: [
+          "https://images.pexels.com/photos/263194/pexels-photo-263194.jpeg",
+        ],
         inStock: 8,
         sold: 94,
         warranty: "2 years",
@@ -154,7 +159,9 @@ export default function Equipment() {
           "Portable design",
         ],
         certifications: ["CE Mark", "NHS Approved", "ISO 15197"],
-        images: ["/placeholder.svg"],
+        images: [
+          "https://images.pexels.com/photos/7723534/pexels-photo-7723534.jpeg",
+        ],
         inStock: 3,
         sold: 156,
         warranty: "2 years",
@@ -183,7 +190,9 @@ export default function Equipment() {
           "Emergency lowering",
         ],
         certifications: ["CE Mark", "NHS Approved", "BS EN 60601"],
-        images: ["/placeholder.svg"],
+        images: [
+          "https://images.pexels.com/photos/236380/pexels-photo-236380.jpeg",
+        ],
         inStock: 22,
         sold: 73,
         warranty: "5 years",
@@ -212,7 +221,9 @@ export default function Equipment() {
           "Single use",
         ],
         certifications: ["NIOSH N95", "CE Mark", "NHS Approved"],
-        images: ["/placeholder.svg"],
+        images: [
+          "https://images.pexels.com/photos/3993241/pexels-photo-3993241.jpeg",
+        ],
         inStock: 500,
         sold: 2847,
         warranty: "N/A",
@@ -241,7 +252,9 @@ export default function Equipment() {
           "Complete instrument set",
         ],
         certifications: ["CE Mark", "NHS Approved", "ISO 13485"],
-        images: ["/placeholder.svg"],
+        images: [
+          "https://images.pexels.com/photos/6627704/pexels-photo-6627704.jpeg",
+        ],
         inStock: 0,
         sold: 23,
         warranty: "2 years",
@@ -250,6 +263,24 @@ export default function Equipment() {
 
     setEquipment(simulatedEquipment);
   }, []);
+
+  // Real-time search functionality
+  useEffect(() => {
+    if (searchTerm.trim()) {
+      setShowSearchResults(true);
+      // Simulate real-time search results
+      const results = equipment.filter(
+        (item) =>
+          item.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
+          item.description.toLowerCase().includes(searchTerm.toLowerCase()) ||
+          item.category.toLowerCase().includes(searchTerm.toLowerCase()),
+      );
+      setSearchResults(results);
+    } else {
+      setShowSearchResults(false);
+      setSearchResults([]);
+    }
+  }, [searchTerm, equipment]);
 
   const filteredEquipment = equipment.filter((item) => {
     const matchesSearch =
@@ -318,7 +349,7 @@ export default function Equipment() {
   };
 
   const handleContactSupplier = (supplier: any) => {
-    window.open(`tel:${supplier.phone}`, "_self");
+    setSelectedSupplier(supplier);
   };
 
   const handleBuyNow = (item: EquipmentItem) => {
@@ -447,41 +478,88 @@ export default function Equipment() {
         <div className="mb-8">
           <Card>
             <CardContent className="p-6">
-              <div className="flex flex-col lg:flex-row gap-4">
-                <div className="flex-1 relative">
-                  <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 w-5 h-5 text-gray-400" />
-                  <Input
-                    placeholder="Search equipment, suppliers, or categories..."
-                    value={searchTerm}
-                    onChange={(e) => setSearchTerm(e.target.value)}
-                    className="pl-10"
-                  />
+              <div className="space-y-4">
+                <div className="flex flex-col lg:flex-row gap-4">
+                  <div className="flex-1 relative">
+                    <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 w-5 h-5 text-gray-400" />
+                    <Input
+                      placeholder="Search equipment, suppliers, or categories..."
+                      value={searchTerm}
+                      onChange={(e) => setSearchTerm(e.target.value)}
+                      className="pl-10"
+                    />
+                  </div>
+                  <div className="flex items-center space-x-4">
+                    <Filter className="w-5 h-5 text-gray-400" />
+                    <select
+                      value={selectedCategory}
+                      onChange={(e) => setSelectedCategory(e.target.value)}
+                      className="px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary"
+                    >
+                      {categories.map((cat) => (
+                        <option key={cat.value} value={cat.value}>
+                          {cat.label}
+                        </option>
+                      ))}
+                    </select>
+                    <select
+                      value={priceRange}
+                      onChange={(e) => setPriceRange(e.target.value)}
+                      className="px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary"
+                    >
+                      {priceRanges.map((range) => (
+                        <option key={range.value} value={range.value}>
+                          {range.label}
+                        </option>
+                      ))}
+                    </select>
+                  </div>
                 </div>
-                <div className="flex items-center space-x-4">
-                  <Filter className="w-5 h-5 text-gray-400" />
-                  <select
-                    value={selectedCategory}
-                    onChange={(e) => setSelectedCategory(e.target.value)}
-                    className="px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary"
-                  >
-                    {categories.map((cat) => (
-                      <option key={cat.value} value={cat.value}>
-                        {cat.label}
-                      </option>
-                    ))}
-                  </select>
-                  <select
-                    value={priceRange}
-                    onChange={(e) => setPriceRange(e.target.value)}
-                    className="px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary"
-                  >
-                    {priceRanges.map((range) => (
-                      <option key={range.value} value={range.value}>
-                        {range.label}
-                      </option>
-                    ))}
-                  </select>
-                </div>
+
+                {/* Real-time Search Results */}
+                {showSearchResults && (
+                  <div className="bg-blue-50 p-4 rounded-lg">
+                    <div className="flex items-center justify-between mb-3">
+                      <h4 className="font-semibold text-blue-900">
+                        Search Results for "{searchTerm}"
+                      </h4>
+                      <div className="flex items-center space-x-2">
+                        <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
+                        <span className="text-sm text-blue-700">
+                          Real-time results
+                        </span>
+                      </div>
+                    </div>
+                    <div className="space-y-2">
+                      {searchResults.slice(0, 3).map((item) => (
+                        <div
+                          key={item.id}
+                          className="flex items-center justify-between bg-white p-3 rounded"
+                        >
+                          <div>
+                            <div className="font-medium text-gray-900">
+                              {item.name}
+                            </div>
+                            <div className="text-sm text-gray-600">
+                              £{item.price.toLocaleString()} •{" "}
+                              {item.supplier.name}
+                            </div>
+                          </div>
+                          <Badge
+                            className={getAvailabilityColor(item.availability)}
+                          >
+                            {item.availability}
+                          </Badge>
+                        </div>
+                      ))}
+                      {searchResults.length > 3 && (
+                        <div className="text-sm text-blue-700 text-center pt-2">
+                          +{searchResults.length - 3} more results shown below
+                        </div>
+                      )}
+                    </div>
+                  </div>
+                )}
               </div>
             </CardContent>
           </Card>
@@ -522,8 +600,12 @@ export default function Equipment() {
             return (
               <Card key={item.id} className="hover:shadow-lg transition-shadow">
                 <CardHeader className="pb-3">
-                  <div className="aspect-video bg-gray-100 rounded-lg mb-4 flex items-center justify-center">
-                    <CategoryIcon className="w-12 h-12 text-gray-400" />
+                  <div className="aspect-video bg-gray-100 rounded-lg mb-4 overflow-hidden">
+                    <img
+                      src={item.images[0]}
+                      alt={item.name}
+                      className="w-full h-full object-cover"
+                    />
                   </div>
                   <div className="flex items-start justify-between">
                     <div className="flex-1">
@@ -695,6 +777,90 @@ export default function Equipment() {
             </CardContent>
           </Card>
         </div>
+
+        {/* Supplier Phone Modal */}
+        {selectedSupplier && (
+          <div className="fixed inset-0 bg-black/50 z-50 flex items-center justify-center p-4">
+            <Card className="w-full max-w-md">
+              <CardHeader className="relative">
+                <button
+                  onClick={() => setSelectedSupplier(null)}
+                  className="absolute right-4 top-4 p-2 hover:bg-gray-100 rounded-full transition-colors"
+                >
+                  <X className="w-5 h-5" />
+                </button>
+                <CardTitle className="flex items-center space-x-2">
+                  <Phone className="w-5 h-5" />
+                  <span>Contact Supplier</span>
+                </CardTitle>
+              </CardHeader>
+              <CardContent className="space-y-4">
+                <div className="text-center">
+                  <div className="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-4">
+                    <Building className="w-8 h-8 text-primary" />
+                  </div>
+                  <h3 className="text-lg font-semibold text-gray-900 mb-2">
+                    {selectedSupplier.name}
+                  </h3>
+                  <div className="flex items-center justify-center space-x-2 mb-4">
+                    <Star className="w-4 h-4 text-yellow-500 fill-current" />
+                    <span className="font-semibold">
+                      {selectedSupplier.rating}
+                    </span>
+                    <span className="text-gray-600">rating</span>
+                  </div>
+                  <div className="flex items-center justify-center space-x-2 text-gray-600 mb-4">
+                    <MapPin className="w-4 h-4" />
+                    <span>{selectedSupplier.location}</span>
+                  </div>
+                  {selectedSupplier.verified && (
+                    <Badge className="bg-green-100 text-green-800 mb-4">
+                      <CheckCircle className="w-3 h-3 mr-1" />
+                      Verified Supplier
+                    </Badge>
+                  )}
+                </div>
+
+                <div className="space-y-3">
+                  <div className="bg-gray-50 p-4 rounded-lg text-center">
+                    <div className="text-sm text-gray-600 mb-1">
+                      Phone Number
+                    </div>
+                    <div className="text-lg font-semibold text-gray-900">
+                      {selectedSupplier.phone}
+                    </div>
+                  </div>
+
+                  <div className="space-y-2">
+                    <Button
+                      onClick={() =>
+                        window.open(`tel:${selectedSupplier.phone}`, "_self")
+                      }
+                      className="w-full"
+                    >
+                      <Phone className="w-4 h-4 mr-2" />
+                      Call Now
+                    </Button>
+                    <Button
+                      variant="outline"
+                      onClick={() => {
+                        navigator.clipboard.writeText(selectedSupplier.phone);
+                        alert("Phone number copied to clipboard!");
+                      }}
+                      className="w-full"
+                    >
+                      Copy Phone Number
+                    </Button>
+                  </div>
+
+                  <div className="text-xs text-gray-500 text-center">
+                    Business hours: Monday - Friday, 9:00 AM - 5:00 PM GMT
+                  </div>
+                </div>
+              </CardContent>
+            </Card>
+          </div>
+        )}
       </main>
 
       <Footer />
