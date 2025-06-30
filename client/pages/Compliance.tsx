@@ -45,6 +45,8 @@ export default function Compliance() {
   const [documents, setDocuments] = useState<ComplianceDocument[]>([]);
   const [searchTerm, setSearchTerm] = useState("");
   const [selectedCategory, setSelectedCategory] = useState<string>("all");
+  const [selectedDocument, setSelectedDocument] =
+    useState<ComplianceDocument | null>(null);
   const [complianceStats, setComplianceStats] = useState({
     totalDocuments: 1247,
     recentUpdates: 23,
@@ -436,17 +438,10 @@ export default function Compliance() {
                     <Button
                       variant="outline"
                       size="sm"
-                      onClick={() => window.open(doc.sourceUrl, "_blank")}
+                      onClick={() => setSelectedDocument(doc)}
                     >
                       <Eye className="w-4 h-4 mr-2" />
                       View
-                    </Button>
-                    <Button
-                      variant="outline"
-                      size="sm"
-                      onClick={() => window.open(doc.sourceUrl, "_blank")}
-                    >
-                      <ExternalLink className="w-4 h-4" />
                     </Button>
                   </div>
                 </div>
@@ -520,6 +515,189 @@ export default function Compliance() {
             </div>
           </CardContent>
         </Card>
+
+        {/* Document View Modal */}
+        {selectedDocument && (
+          <div className="fixed inset-0 bg-black/50 z-50 flex items-center justify-center p-4 overflow-y-auto">
+            <Card className="w-full max-w-4xl max-h-[90vh] overflow-y-auto">
+              <CardHeader className="relative border-b">
+                <button
+                  onClick={() => setSelectedDocument(null)}
+                  className="absolute right-4 top-4 p-2 hover:bg-gray-100 rounded-full transition-colors"
+                >
+                  <X className="w-5 h-5" />
+                </button>
+
+                <div className="pr-12">
+                  <div className="flex items-center space-x-3 mb-4">
+                    <Badge
+                      className={getCategoryColor(selectedDocument.category)}
+                    >
+                      {selectedDocument.category}
+                    </Badge>
+                    <Badge
+                      className={getUrgencyColor(selectedDocument.urgency)}
+                    >
+                      {selectedDocument.urgency} priority
+                    </Badge>
+                    <Badge className="bg-green-100 text-green-800">
+                      <CheckCircle className="w-3 h-3 mr-1" />
+                      NHS Approved
+                    </Badge>
+                  </div>
+
+                  <CardTitle className="text-2xl mb-4">
+                    {selectedDocument.title}
+                  </CardTitle>
+
+                  <div className="flex items-center justify-between text-sm text-gray-600 mb-4">
+                    <div className="flex items-center space-x-6">
+                      <div className="flex items-center space-x-1">
+                        <Calendar className="w-4 h-4" />
+                        <span>
+                          Last Updated:{" "}
+                          {new Date(
+                            selectedDocument.lastUpdated,
+                          ).toLocaleDateString("en-GB")}
+                        </span>
+                      </div>
+                      <div className="flex items-center space-x-1">
+                        <FileText className="w-4 h-4" />
+                        <span>Version: {selectedDocument.version}</span>
+                      </div>
+                      <div className="flex items-center space-x-1">
+                        <Download className="w-4 h-4" />
+                        <span>
+                          {selectedDocument.downloads.toLocaleString()}{" "}
+                          downloads
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </CardHeader>
+
+              <CardContent className="p-8">
+                <div className="prose max-w-none">
+                  <p className="text-lg text-gray-700 mb-6 font-medium">
+                    {selectedDocument.description}
+                  </p>
+
+                  <div className="bg-gray-50 p-6 rounded-lg mb-6">
+                    <h3 className="font-semibold text-gray-900 mb-4">
+                      Document Overview
+                    </h3>
+                    <div className="grid md:grid-cols-2 gap-6">
+                      <div>
+                        <h4 className="font-medium text-gray-900 mb-2">
+                          Key Sections:
+                        </h4>
+                        <ul className="space-y-1 text-gray-600">
+                          <li>• Executive Summary and Overview</li>
+                          <li>• Regulatory Requirements and Standards</li>
+                          <li>• Implementation Guidelines and Procedures</li>
+                          <li>• Compliance Checklist and Assessment</li>
+                          <li>• Quality Assurance and Monitoring</li>
+                          <li>• Training and Development Requirements</li>
+                          <li>• Risk Management and Mitigation</li>
+                          <li>• Reporting and Documentation</li>
+                        </ul>
+                      </div>
+                      <div>
+                        <h4 className="font-medium text-gray-900 mb-2">
+                          Document Details:
+                        </h4>
+                        <div className="space-y-2 text-gray-600">
+                          <div className="flex justify-between">
+                            <span>File Size:</span>
+                            <span className="font-semibold">
+                              {selectedDocument.fileSize}
+                            </span>
+                          </div>
+                          <div className="flex justify-between">
+                            <span>Source:</span>
+                            <span className="font-semibold">
+                              {selectedDocument.source}
+                            </span>
+                          </div>
+                          <div className="flex justify-between">
+                            <span>Category:</span>
+                            <span className="font-semibold capitalize">
+                              {selectedDocument.category}
+                            </span>
+                          </div>
+                          <div className="flex justify-between">
+                            <span>Priority Level:</span>
+                            <span className="font-semibold capitalize">
+                              {selectedDocument.urgency}
+                            </span>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div className="bg-blue-50 p-6 rounded-lg mb-6">
+                    <h3 className="font-semibold text-blue-900 mb-2">
+                      Compliance Requirements
+                    </h3>
+                    <p className="text-blue-700 mb-4">
+                      This document outlines mandatory requirements for NHS
+                      healthcare providers. All staff must be familiar with
+                      these guidelines and ensure full compliance within their
+                      respective roles and responsibilities.
+                    </p>
+                    <div className="grid md:grid-cols-3 gap-4">
+                      <div className="text-center">
+                        <div className="text-lg font-bold text-blue-900">
+                          100%
+                        </div>
+                        <div className="text-sm text-blue-700">
+                          Compliance Required
+                        </div>
+                      </div>
+                      <div className="text-center">
+                        <div className="text-lg font-bold text-blue-900">
+                          Annual
+                        </div>
+                        <div className="text-sm text-blue-700">
+                          Review Frequency
+                        </div>
+                      </div>
+                      <div className="text-center">
+                        <div className="text-lg font-bold text-blue-900">
+                          Mandatory
+                        </div>
+                        <div className="text-sm text-blue-700">
+                          Training Status
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div className="mt-8 pt-6 border-t border-gray-200">
+                    <div className="flex items-center justify-between">
+                      <div className="text-sm text-gray-600">
+                        Official NHS Compliance Document
+                      </div>
+                      <div className="flex items-center space-x-4">
+                        <Button
+                          onClick={() =>
+                            handleDownloadDocument(selectedDocument)
+                          }
+                          size="sm"
+                        >
+                          <Download className="w-4 h-4 mr-1" />
+                          Download Document
+                        </Button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </CardContent>
+            </Card>
+          </div>
+        )}
       </main>
 
       <Footer />
