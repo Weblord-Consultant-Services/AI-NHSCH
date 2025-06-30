@@ -12,6 +12,11 @@ import Equipment from "./pages/Equipment";
 import News from "./pages/News";
 import About from "./pages/About";
 import Contact from "./pages/Contact";
+import HelpCenter from "./pages/HelpCenter";
+import Documentation from "./pages/Documentation";
+import Training from "./pages/Training";
+import APIReference from "./pages/APIReference";
+import SystemStatus from "./pages/SystemStatus";
 import PrivacyPolicy from "./pages/PrivacyPolicy";
 import TermsOfService from "./pages/TermsOfService";
 import CookiePolicy from "./pages/CookiePolicy";
@@ -32,6 +37,11 @@ const App = () => (
         <Route path="/news" element={<News />} />
         <Route path="/about" element={<About />} />
         <Route path="/contact" element={<Contact />} />
+        <Route path="/help-center" element={<HelpCenter />} />
+        <Route path="/documentation" element={<Documentation />} />
+        <Route path="/training" element={<Training />} />
+        <Route path="/api-reference" element={<APIReference />} />
+        <Route path="/system-status" element={<SystemStatus />} />
         <Route path="/privacy-policy" element={<PrivacyPolicy />} />
         <Route path="/terms-of-service" element={<TermsOfService />} />
         <Route path="/cookie-policy" element={<CookiePolicy />} />
