@@ -25,6 +25,8 @@ import {
   Package,
   AlertCircle,
   CheckCircle,
+  X,
+  Building,
 } from "lucide-react";
 
 interface EquipmentItem {
@@ -99,7 +101,9 @@ export default function Equipment() {
           "Integrated monitoring",
         ],
         certifications: ["CE Mark", "NHS Approved", "ISO 13485"],
-        images: ["/placeholder.svg"],
+        images: [
+          "https://images.pexels.com/photos/18112241/pexels-photo-18112241.jpeg",
+        ],
         inStock: 15,
         sold: 127,
         warranty: "3 years",
