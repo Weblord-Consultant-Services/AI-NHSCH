@@ -80,8 +80,8 @@ export default function Contact() {
     {
       icon: MapPin,
       title: "Office Address",
-      value: "123 Healthcare Avenue",
-      description: "London, UK EC1A 1BB",
+      value: "85 Great Portland Street",
+      description: "First Floor, London, England, W1W 7LT",
       action: "#",
       color: "bg-orange-500",
     },

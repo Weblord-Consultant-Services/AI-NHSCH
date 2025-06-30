@@ -368,18 +368,19 @@ export default function ConnectModal({
             </p>
           </div>
 
-          {/* NHS Verification Notice */}
+          {/* NHSCareHub Platform Notice */}
           <div className="bg-blue-50 border border-blue-200 p-3 rounded-lg">
             <div className="flex items-center space-x-2 mb-2">
               <CheckCircle className="w-4 h-4 text-blue-600" />
               <span className="text-sm font-semibold text-blue-900">
-                NHS Verification
+                NHSCareHub Platform Verification
               </span>
             </div>
             <p className="text-xs text-blue-700">
-              All accounts are verified against NHS employee databases to ensure
-              platform security and authenticity. Verification typically takes
-              24-48 hours.
+              All accounts are verified to ensure platform security and
+              authenticity for healthcare professionals. Account verification
+              typically takes 24-48 hours to complete your NHSCareHub Platform
+              access.
             </p>
           </div>
         </CardContent>

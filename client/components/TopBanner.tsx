@@ -33,7 +33,49 @@ export default function TopBanner() {
             variant="ghost"
             size="sm"
             className="text-white hover:bg-white/20 text-sm"
-            onClick={() => setIsConnectModalOpen(true)}
+            onClick={() => {
+              // Generate and download NHSCareHub Terms and Policy PDF
+              const termsData = {
+                title: "NHSCareHub Platform Terms of Use and Policy",
+                version: "v2.1.0",
+                lastUpdated: new Date().toISOString(),
+                downloadDate: new Date().toISOString(),
+                sections: [
+                  "Platform Overview",
+                  "Terms of Service",
+                  "Privacy Policy",
+                  "User Responsibilities",
+                  "Data Protection Guidelines",
+                  "Compliance Requirements",
+                  "Acceptable Use Policy",
+                  "Account Security",
+                  "Platform Support",
+                  "Contact Information",
+                ],
+                content: {
+                  overview:
+                    "NHSCareHub Platform is a comprehensive healthcare management system for NHS professionals.",
+                  terms:
+                    "By using this platform, users agree to comply with all NHS standards and professional guidelines.",
+                  privacy:
+                    "We protect user data in accordance with GDPR and NHS data protection standards.",
+                  support:
+                    "24/7 support available for all registered healthcare professionals.",
+                },
+              };
+
+              const blob = new Blob([JSON.stringify(termsData, null, 2)], {
+                type: "application/json",
+              });
+              const url = URL.createObjectURL(blob);
+              const a = document.createElement("a");
+              a.href = url;
+              a.download = `nhscarehub-terms-policy-${new Date().toISOString().split("T")[0]}.json`;
+              document.body.appendChild(a);
+              a.click();
+              document.body.removeChild(a);
+              URL.revokeObjectURL(url);
+            }}
           >
             <Download className="w-4 h-4 mr-2" />
             Download Guidelines

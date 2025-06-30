@@ -202,7 +202,11 @@ export default function StaffPortal() {
 
           <Button
             variant="outline"
-            onClick={() => window.open("https://www.jobs.nhs.uk/", "_blank")}
+            onClick={() =>
+              document
+                .getElementById("nhs-jobs-section")
+                ?.scrollIntoView({ behavior: "smooth" })
+            }
           >
             <UserPlus className="w-4 h-4 mr-2" />
             NHS Jobs Portal
@@ -211,7 +215,9 @@ export default function StaffPortal() {
           <Button
             variant="outline"
             onClick={() =>
-              window.open("https://www.healthcareers.nhs.uk/", "_blank")
+              document
+                .getElementById("career-guidance-section")
+                ?.scrollIntoView({ behavior: "smooth" })
             }
           >
             <Briefcase className="w-4 h-4 mr-2" />
@@ -220,7 +226,11 @@ export default function StaffPortal() {
 
           <Button
             variant="outline"
-            onClick={() => window.open("https://www.nhsbsa.nhs.uk/", "_blank")}
+            onClick={() =>
+              document
+                .getElementById("training-portal-section")
+                ?.scrollIntoView({ behavior: "smooth" })
+            }
           >
             <Calendar className="w-4 h-4 mr-2" />
             Training Portal
@@ -386,6 +396,195 @@ export default function StaffPortal() {
               </CardContent>
             </Card>
           </div>
+        </div>
+
+        {/* NHS Jobs Portal Section */}
+        <div id="nhs-jobs-section" className="mt-16">
+          <Card>
+            <CardHeader>
+              <CardTitle className="flex items-center space-x-2">
+                <UserPlus className="w-5 h-5" />
+                <span>NHS Jobs Portal Information</span>
+              </CardTitle>
+            </CardHeader>
+            <CardContent className="space-y-6">
+              <div className="grid md:grid-cols-2 gap-6">
+                <div>
+                  <h3 className="font-semibold text-gray-900 mb-3">
+                    How to Apply for NHS Jobs
+                  </h3>
+                  <ul className="space-y-2 text-gray-600">
+                    <li>
+                      • Create your NHS Jobs account with professional email
+                    </li>
+                    <li>• Upload your CV and supporting documents</li>
+                    <li>• Complete application forms for specific positions</li>
+                    <li>• Track your application status in real-time</li>
+                    <li>• Receive interview invitations and feedback</li>
+                  </ul>
+                </div>
+                <div>
+                  <h3 className="font-semibold text-gray-900 mb-3">
+                    Application Requirements
+                  </h3>
+                  <ul className="space-y-2 text-gray-600">
+                    <li>• Valid professional registration (NMC, GMC, etc.)</li>
+                    <li>• Enhanced DBS check (for patient-facing roles)</li>
+                    <li>• Occupational health clearance</li>
+                    <li>• Right to work in the UK documentation</li>
+                    <li>• Professional references (minimum 2)</li>
+                  </ul>
+                </div>
+              </div>
+              <div className="bg-blue-50 p-4 rounded-lg">
+                <h4 className="font-semibold text-blue-900 mb-2">
+                  Quick Application Tips
+                </h4>
+                <p className="text-blue-700 text-sm">
+                  Tailor your personal statement to each role, highlight
+                  relevant NHS values, and ensure all supporting evidence meets
+                  the person specification requirements.
+                </p>
+              </div>
+              <Button
+                onClick={() =>
+                  window.open("https://www.jobs.nhs.uk/", "_blank")
+                }
+                className="w-full"
+              >
+                <ExternalLink className="w-4 h-4 mr-2" />
+                Access NHS Jobs Portal
+              </Button>
+            </CardContent>
+          </Card>
+        </div>
+
+        {/* Career Guidance Section */}
+        <div id="career-guidance-section" className="mt-8">
+          <Card>
+            <CardHeader>
+              <CardTitle className="flex items-center space-x-2">
+                <Briefcase className="w-5 h-5" />
+                <span>NHS Career Guidance</span>
+              </CardTitle>
+            </CardHeader>
+            <CardContent className="space-y-6">
+              <div className="grid md:grid-cols-3 gap-6">
+                <div>
+                  <h3 className="font-semibold text-gray-900 mb-3">
+                    Career Pathways
+                  </h3>
+                  <ul className="space-y-2 text-gray-600 text-sm">
+                    <li>• Clinical Career Progression</li>
+                    <li>• Leadership Development</li>
+                    <li>• Specialist Training Routes</li>
+                    <li>• Research and Academia</li>
+                    <li>• Management Opportunities</li>
+                  </ul>
+                </div>
+                <div>
+                  <h3 className="font-semibold text-gray-900 mb-3">
+                    Professional Development
+                  </h3>
+                  <ul className="space-y-2 text-gray-600 text-sm">
+                    <li>• CPD Requirements</li>
+                    <li>• Mandatory Training</li>
+                    <li>• Skills Development</li>
+                    <li>• Mentorship Programs</li>
+                    <li>• Quality Improvement</li>
+                  </ul>
+                </div>
+                <div>
+                  <h3 className="font-semibold text-gray-900 mb-3">
+                    Support Services
+                  </h3>
+                  <ul className="space-y-2 text-gray-600 text-sm">
+                    <li>• Career Counseling</li>
+                    <li>• Interview Preparation</li>
+                    <li>• CV Review Service</li>
+                    <li>• Networking Events</li>
+                    <li>• Work-Life Balance</li>
+                  </ul>
+                </div>
+              </div>
+              <div className="bg-green-50 p-4 rounded-lg">
+                <h4 className="font-semibold text-green-900 mb-2">
+                  Career Development Fund
+                </h4>
+                <p className="text-green-700 text-sm">
+                  NHS staff can access up to £1,500 annually for professional
+                  development, including courses, conferences, and
+                  certifications.
+                </p>
+              </div>
+            </CardContent>
+          </Card>
+        </div>
+
+        {/* Training Portal Section */}
+        <div id="training-portal-section" className="mt-8">
+          <Card>
+            <CardHeader>
+              <CardTitle className="flex items-center space-x-2">
+                <Calendar className="w-5 h-5" />
+                <span>NHS Training Portal</span>
+              </CardTitle>
+            </CardHeader>
+            <CardContent className="space-y-6">
+              <div className="grid md:grid-cols-2 gap-6">
+                <div>
+                  <h3 className="font-semibold text-gray-900 mb-3">
+                    Mandatory Training
+                  </h3>
+                  <ul className="space-y-2 text-gray-600">
+                    <li>• Health and Safety (Annual)</li>
+                    <li>• Infection Prevention and Control</li>
+                    <li>• Fire Safety and Emergency Procedures</li>
+                    <li>• Information Governance and Data Protection</li>
+                    <li>• Equality, Diversity, and Human Rights</li>
+                    <li>• Safeguarding Adults and Children</li>
+                  </ul>
+                </div>
+                <div>
+                  <h3 className="font-semibold text-gray-900 mb-3">
+                    Specialized Training
+                  </h3>
+                  <ul className="space-y-2 text-gray-600">
+                    <li>• Clinical Skills Development</li>
+                    <li>• Leadership and Management</li>
+                    <li>• Digital Health Technologies</li>
+                    <li>• Quality Improvement Methods</li>
+                    <li>• Research and Evidence-Based Practice</li>
+                    <li>��� Patient Communication Skills</li>
+                  </ul>
+                </div>
+              </div>
+              <div className="grid md:grid-cols-3 gap-4 mt-6">
+                <div className="bg-purple-50 p-4 rounded-lg text-center">
+                  <h4 className="font-semibold text-purple-900 mb-1">
+                    Online Courses
+                  </h4>
+                  <p className="text-purple-700 text-sm">
+                    240+ modules available
+                  </p>
+                </div>
+                <div className="bg-orange-50 p-4 rounded-lg text-center">
+                  <h4 className="font-semibold text-orange-900 mb-1">
+                    Completion Rate
+                  </h4>
+                  <p className="text-orange-700 text-sm">
+                    94% staff compliance
+                  </p>
+                </div>
+                <div className="bg-blue-50 p-4 rounded-lg text-center">
+                  <h4 className="font-semibold text-blue-900 mb-1">
+                    Certificates
+                  </h4>
+                  <p className="text-blue-700 text-sm">Digital certification</p>
+                </div>
+              </div>
+            </CardContent>
+          </Card>
         </div>
       </main>
 

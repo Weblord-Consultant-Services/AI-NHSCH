@@ -341,6 +341,21 @@ export default function Navigation() {
                     <Card
                       key={result.id}
                       className="hover:shadow-md transition-shadow cursor-pointer"
+                      onClick={() => {
+                        setIsAISearchOpen(false);
+                        setSearchQuery("");
+                        setSearchResults([]);
+                        // Navigate to relevant page based on category
+                        const targetPath =
+                          result.category === "recruitment"
+                            ? "/staff-portal"
+                            : result.category === "compliance"
+                              ? "/compliance"
+                              : result.category === "equipment"
+                                ? "/equipment"
+                                : "/";
+                        window.location.href = targetPath;
+                      }}
                     >
                       <CardContent className="p-4">
                         <div className="flex items-start justify-between">
