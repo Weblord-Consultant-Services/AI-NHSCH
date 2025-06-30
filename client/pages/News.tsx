@@ -346,7 +346,7 @@ The programme is expected to be fully operational across all 50 sites by Decembe
 
 **Energy Efficiency**: Major retrofitting programmes will improve insulation, install smart heating systems, and deploy renewable energy solutions across 1,500 NHS buildings.
 
-**Sustainable Transport**: 
+**Sustainable Transport**:
 - Electric vehicle fleet for patient transport
 - Improved public transport links to hospitals
 - Cycling infrastructure for staff
@@ -704,30 +704,88 @@ Regular security audits and updates ensure continued protection against evolving
         <div className="mb-8">
           <Card>
             <CardContent className="p-6">
-              <div className="flex flex-col md:flex-row gap-4">
-                <div className="flex-1 relative">
-                  <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 w-5 h-5 text-gray-400" />
-                  <Input
-                    placeholder="Search news articles, topics, or keywords..."
-                    value={searchTerm}
-                    onChange={(e) => setSearchTerm(e.target.value)}
-                    className="pl-10"
-                  />
+              <div className="space-y-4">
+                <div className="flex flex-col md:flex-row gap-4">
+                  <div className="flex-1 relative">
+                    <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 w-5 h-5 text-gray-400" />
+                    <Input
+                      placeholder="Search UK healthcare news, topics, or keywords..."
+                      value={searchTerm}
+                      onChange={(e) => setSearchTerm(e.target.value)}
+                      className="pl-10"
+                    />
+                  </div>
+                  <div className="flex items-center space-x-4">
+                    <Filter className="w-5 h-5 text-gray-400" />
+                    <select
+                      value={selectedCategory}
+                      onChange={(e) => setSelectedCategory(e.target.value)}
+                      className="px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary"
+                    >
+                      {categories.map((cat) => (
+                        <option key={cat.value} value={cat.value}>
+                          {cat.label}
+                        </option>
+                      ))}
+                    </select>
+                  </div>
                 </div>
-                <div className="flex items-center space-x-4">
-                  <Filter className="w-5 h-5 text-gray-400" />
-                  <select
-                    value={selectedCategory}
-                    onChange={(e) => setSelectedCategory(e.target.value)}
-                    className="px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary"
-                  >
-                    {categories.map((cat) => (
-                      <option key={cat.value} value={cat.value}>
-                        {cat.label}
-                      </option>
-                    ))}
-                  </select>
-                </div>
+
+                {/* Real-time UK Healthcare News Search Results */}
+                {searchTerm && filteredArticles.length > 0 && (
+                  <div className="bg-green-50 p-4 rounded-lg">
+                    <div className="flex items-center justify-between mb-3">
+                      <h4 className="font-semibold text-green-900">
+                        UK Healthcare News Results for "{searchTerm}"
+                      </h4>
+                      <div className="flex items-center space-x-2">
+                        <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
+                        <span className="text-sm text-green-700">
+                          Live UK News Feed
+                        </span>
+                      </div>
+                    </div>
+                    <div className="space-y-2">
+                      {filteredArticles.slice(0, 3).map((article) => (
+                        <div
+                          key={article.id}
+                          className="flex items-center justify-between bg-white p-3 rounded cursor-pointer hover:bg-gray-50"
+                          onClick={() => setSelectedArticle(article)}
+                        >
+                          <div>
+                            <div className="font-medium text-gray-900 line-clamp-1">
+                              {article.title}
+                            </div>
+                            <div className="text-sm text-gray-600">
+                              {article.source} •{" "}
+                              {new Date(article.publishedAt).toLocaleDateString(
+                                "en-GB",
+                              )}
+                            </div>
+                          </div>
+                          <div className="flex items-center space-x-2">
+                            <Badge
+                              className={getCategoryColor(article.category)}
+                            >
+                              {article.category}
+                            </Badge>
+                            {article.priority === "high" && (
+                              <Badge className="bg-red-100 text-red-800">
+                                Breaking
+                              </Badge>
+                            )}
+                          </div>
+                        </div>
+                      ))}
+                      {filteredArticles.length > 3 && (
+                        <div className="text-sm text-green-700 text-center pt-2">
+                          +{filteredArticles.length - 3} more UK healthcare news
+                          articles found
+                        </div>
+                      )}
+                    </div>
+                  </div>
+                )}
               </div>
             </CardContent>
           </Card>
