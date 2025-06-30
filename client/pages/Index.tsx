@@ -151,7 +151,16 @@ export default function Index() {
 
       {/* Hero Section */}
       <section className="relative bg-gradient-to-br from-blue-50 to-green-50 py-20">
-        <div className="absolute inset-0 bg-grid-pattern opacity-5"></div>
+        <div
+          className="absolute inset-0 bg-grid-pattern opacity-5"
+          style={{
+            backgroundImage:
+              "url(https://cdn.builder.io/api/v1/image/assets%2Fc958b415ffc540ad9c90ee1b661265c5%2F2aaa3a9f30d94fb9b75f812a609e0a67)",
+            backgroundRepeat: "no-repeat",
+            backgroundPosition: "center",
+            backgroundSize: "cover",
+          }}
+        ></div>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <div className="space-y-8">
