@@ -137,60 +137,45 @@ export default function Footer() {
             <h4 className="text-lg font-poppins font-semibold mb-4">Support</h4>
             <ul className="space-y-3">
               <li>
-                <a
-                  href="https://www.nhs.uk/using-the-nhs/about-the-nhs/contact-us/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex items-center space-x-2 text-gray-300 hover:text-white transition-colors"
+                <Link
+                  to="/help-center"
+                  className="text-gray-300 hover:text-white transition-colors"
                 >
-                  <span>Help Center</span>
-                  <ExternalLink className="w-3 h-3" />
-                </a>
+                  Help Center
+                </Link>
               </li>
               <li>
-                <a
-                  href="https://digital.nhs.uk/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex items-center space-x-2 text-gray-300 hover:text-white transition-colors"
+                <Link
+                  to="/documentation"
+                  className="text-gray-300 hover:text-white transition-colors"
                 >
-                  <span>Documentation</span>
-                  <ExternalLink className="w-3 h-3" />
-                </a>
+                  Documentation
+                </Link>
               </li>
               <li>
-                <a
-                  href="https://www.healthcareers.nhs.uk/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex items-center space-x-2 text-gray-300 hover:text-white transition-colors"
+                <Link
+                  to="/training"
+                  className="text-gray-300 hover:text-white transition-colors"
                 >
-                  <span>Training</span>
-                  <ExternalLink className="w-3 h-3" />
-                </a>
+                  Training
+                </Link>
               </li>
               <li>
-                <a
-                  href="https://digital.nhs.uk/developer"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex items-center space-x-2 text-gray-300 hover:text-white transition-colors"
+                <Link
+                  to="/api-reference"
+                  className="text-gray-300 hover:text-white transition-colors"
                 >
-                  <span>API Reference</span>
-                  <ExternalLink className="w-3 h-3" />
-                </a>
+                  API Reference
+                </Link>
               </li>
               <li>
-                <a
-                  href="https://www.nhs.uk/service-search/urgent-and-emergency-care"
-                  target="_blank"
-                  rel="noopener noreferrer"
+                <Link
+                  to="/system-status"
                   className="flex items-center space-x-2 text-gray-300 hover:text-white transition-colors"
                 >
                   <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
                   <span>System Status</span>
-                  <ExternalLink className="w-3 h-3" />
-                </a>
+                </Link>
               </li>
             </ul>
           </nav>
