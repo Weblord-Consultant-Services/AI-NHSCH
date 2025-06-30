@@ -179,16 +179,14 @@ export default function Navigation() {
           <div className="flex justify-between items-center h-16">
             {/* Logo */}
             <Link to="/" className="flex items-center">
-              <div className="w-8 h-8 rounded-full flex items-center justify-center bg-no-repeat bg-center bg-cover">
-                <Heart className="w-5 h-5 text-black" />
-              </div>
+              <div className="w-8 h-8 rounded-full flex items-center justify-center bg-no-repeat bg-center bg-cover"></div>
               <span
-                className="font-poppins font-bold text-xl bg-no-repeat bg-center bg-cover"
+                className="font-poppins font-bold text-xl bg-no-repeat bg-center bg-cover block"
                 style={{
                   backgroundImage:
                     "url(https://cdn.builder.io/api/v1/image/assets%2Fc958b415ffc540ad9c90ee1b661265c5%2Fc08e608ea569427989e056724e124520)",
                   margin: "10px 20px 10px 1px",
-                  padding: "10px 50px 10px 60px",
+                  padding: "10px 60px 10px 70px",
                 }}
               >
                 <p>
