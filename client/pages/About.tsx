@@ -22,6 +22,7 @@ import {
   MapPin,
   ArrowRight,
   Download,
+  User,
 } from "lucide-react";
 
 export default function About() {
