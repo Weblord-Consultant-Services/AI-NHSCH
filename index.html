@@ -205,6 +205,58 @@
         ]
       }
     </script>
+
+    <!-- WebSite Schema -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "WebSite",
+        "name": "NHSCareHub",
+        "url": "https://nhscarehub.uk",
+        "potentialAction": {
+          "@type": "SearchAction",
+          "target": "https://nhscarehub.uk/search?q={search_term_string}",
+          "query-input": "required name=search_term_string"
+        },
+        "publisher": {
+          "@type": "Organization",
+          "name": "NHSCareHub",
+          "logo": {
+            "@type": "ImageObject",
+            "url": "https://nhscarehub.uk/placeholder.svg"
+          }
+        }
+      }
+    </script>
+
+    <!-- WebApplication Schema -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "WebApplication",
+        "name": "NHSCareHub Platform",
+        "url": "https://nhscarehub.uk",
+        "applicationCategory": "HealthApplication",
+        "operatingSystem": "Web Browser",
+        "offers": {
+          "@type": "Offer",
+          "price": "0",
+          "priceCurrency": "GBP",
+          "description": "Free 30-day trial available"
+        },
+        "featureList": [
+          "Healthcare Staff Recruitment",
+          "Compliance Management",
+          "Medical Equipment Procurement",
+          "Real-time Dashboard",
+          "AI-powered Search",
+          "Document Management"
+        ],
+        "screenshot": "https://nhscarehub.uk/placeholder.svg",
+        "softwareVersion": "2.1.0",
+        "dateModified": "2025-01-15"
+      }
+    </script>
   </head>
 
   <body>
