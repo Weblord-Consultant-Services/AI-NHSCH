@@ -21,6 +21,7 @@ import {
   Newspaper,
   Info,
   Phone,
+  Menu,
 } from "lucide-react";
 
 interface AISearchResult {
@@ -39,6 +40,7 @@ export default function Navigation() {
   const [searchResults, setSearchResults] = useState<AISearchResult[]>([]);
   const [isSearching, setIsSearching] = useState(false);
   const [isConnectModalOpen, setIsConnectModalOpen] = useState(false);
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   const navigationItems = [
     { path: "/", label: "Home", icon: Home },
@@ -217,8 +219,8 @@ export default function Navigation() {
               })}
             </nav>
 
-            {/* AI Search & Actions */}
-            <div className="flex items-center space-x-3">
+            {/* Desktop Actions */}
+            <div className="hidden md:flex items-center space-x-3">
               {/* AI Search Button */}
               <Button
                 variant="outline"
@@ -228,7 +230,7 @@ export default function Navigation() {
               >
                 <Sparkles className="w-4 h-4 text-primary" />
                 <Search className="w-4 h-4" />
-                <span className="hidden md:inline">AI Search</span>
+                <span className="hidden lg:inline">AI Search</span>
               </Button>
 
               <Button
@@ -239,9 +241,80 @@ export default function Navigation() {
                 Sign In
               </Button>
             </div>
+
+            {/* Mobile Menu Button */}
+            <div className="md:hidden">
+              <Button
+                variant="ghost"
+                size="sm"
+                onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+              >
+                <Menu className="w-6 h-6" />
+              </Button>
+            </div>
           </div>
         </div>
       </header>
+
+      {/* Mobile Menu */}
+      {isMobileMenuOpen && (
+        <div className="md:hidden bg-white border-b border-gray-200 shadow-lg">
+          <div className="px-4 py-6 space-y-4">
+            {/* Mobile Navigation Links */}
+            <nav className="space-y-2">
+              {navigationItems.map((item) => {
+                const Icon = item.icon;
+                const isActive = location.pathname === item.path;
+
+                return (
+                  <Link
+                    key={item.path}
+                    to={item.path}
+                    onClick={() => setIsMobileMenuOpen(false)}
+                    className={`flex items-center space-x-3 px-4 py-3 rounded-lg transition-colors ${
+                      isActive
+                        ? "bg-primary text-white"
+                        : "text-gray-600 hover:text-gray-900 hover:bg-gray-50"
+                    }`}
+                  >
+                    <Icon className="w-5 h-5" />
+                    <span className="font-medium">{item.label}</span>
+                  </Link>
+                );
+              })}
+            </nav>
+
+            {/* Mobile Actions */}
+            <div className="pt-4 border-t border-gray-200 space-y-3">
+              <Button
+                variant="outline"
+                size="sm"
+                onClick={() => {
+                  setIsAISearchOpen(true);
+                  setIsMobileMenuOpen(false);
+                }}
+                className="w-full flex items-center justify-center space-x-2"
+              >
+                <Sparkles className="w-4 h-4 text-primary" />
+                <Search className="w-4 h-4" />
+                <span>AI Search</span>
+              </Button>
+
+              <Button
+                variant="outline"
+                size="sm"
+                onClick={() => {
+                  setIsConnectModalOpen(true);
+                  setIsMobileMenuOpen(false);
+                }}
+                className="w-full"
+              >
+                Sign In
+              </Button>
+            </div>
+          </div>
+        </div>
+      )}
 
       {/* AI Search Modal */}
       {isAISearchOpen && (
