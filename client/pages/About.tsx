@@ -359,6 +359,21 @@ export default function About() {
               </Card>
             ))}
           </div>
+
+          {/* Leadership Team Disclaimer */}
+          <div className="mt-12 text-center">
+            <div className="bg-blue-50 p-6 rounded-lg max-w-4xl mx-auto">
+              <p className="text-sm text-blue-700 italic">
+                <strong>Disclaimer:</strong> The leadership team names and
+                profiles mentioned above do not represent actual persons, but
+                are representative examples created for potential stakeholders
+                and partners to understand the platform's professional
+                foundation and expertise areas. All profiles are illustrative
+                and designed to demonstrate the types of healthcare industry
+                experience behind NHSCareHub.
+              </p>
+            </div>
+          </div>
         </div>
       </section>
 
