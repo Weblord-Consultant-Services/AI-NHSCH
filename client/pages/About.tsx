@@ -35,25 +35,25 @@ export default function About() {
 
   const milestones = [
     {
-      year: "2023",
+      year: "2024",
       title: "Concept Development",
       description:
         "Initial research and development phase focusing on NHS healthcare challenges",
     },
     {
-      year: "2024",
+      year: "2025",
       title: "Platform Launch",
       description:
         "Beta launch with select NHS trusts for staff recruitment and compliance management",
     },
     {
-      year: "2025",
+      year: "2025 - 2026",
       title: "Full Deployment",
       description:
         "Complete platform rollout with equipment marketplace and AI-powered features",
     },
     {
-      year: "2026",
+      year: "2026 and beyond",
       title: "National Expansion",
       description:
         "Planned integration with all major NHS trusts across England, Wales, and Scotland",
