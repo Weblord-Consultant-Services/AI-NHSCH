@@ -450,6 +450,20 @@ export default function Index() {
               </Card>
             ))}
           </div>
+
+          {/* Disclaimer */}
+          <div className="mt-12 text-center">
+            <div className="bg-gray-50 p-6 rounded-lg max-w-4xl mx-auto">
+              <p className="text-sm text-gray-600 italic">
+                <strong>Disclaimer:</strong> The names and testimonials
+                mentioned above do not represent actual persons, but are
+                representative examples created for potential stakeholders to
+                understand the platform's value proposition. All testimonials
+                are illustrative and intended to demonstrate typical user
+                experiences and benefits.
+              </p>
+            </div>
+          </div>
         </div>
       </section>
 
