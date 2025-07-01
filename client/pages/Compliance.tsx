@@ -20,6 +20,7 @@ import {
   Filter,
   Eye,
   TrendingUp,
+  X,
 } from "lucide-react";
 
 interface ComplianceDocument {
