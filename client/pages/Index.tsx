@@ -205,40 +205,45 @@ export default function Index() {
                 </div>
               </div>
 
-              <div className="flex space-x-4">
-                <Link to="/staff-portal">
-                  <Button size="lg" className="text-lg px-8 py-4">
+              <div className="flex flex-col sm:flex-row gap-3 sm:gap-4">
+                <Link to="/staff-portal" className="w-full sm:w-auto">
+                  <Button
+                    size="lg"
+                    className="text-base md:text-lg px-6 md:px-8 py-3 md:py-4 w-full"
+                  >
                     Explore Services
-                    <ArrowRight className="ml-2 w-5 h-5" />
+                    <ArrowRight className="ml-2 w-4 h-4 md:w-5 md:h-5" />
                   </Button>
                 </Link>
                 <Button
                   variant="outline"
                   size="lg"
-                  className="text-lg px-8 py-4"
+                  className="text-base md:text-lg px-6 md:px-8 py-3 md:py-4 w-full sm:w-auto"
                   onClick={() => setIsConnectModalOpen(true)}
                 >
-                  <Download className="mr-2 w-5 h-5" />
+                  <Download className="mr-2 w-4 h-4 md:w-5 md:h-5" />
                   Download Guide
                 </Button>
               </div>
             </div>
 
-            <div className="grid grid-cols-2 gap-4">
+            <div className="grid grid-cols-2 gap-3 md:gap-4 mt-8 lg:mt-0">
               {stats.map((stat, index) => (
                 <Card
                   key={index}
-                  className="p-6 text-center border-0 shadow-lg"
+                  className="p-4 md:p-6 text-center border-0 shadow-lg"
                 >
-                  <CardContent className="p-0 space-y-4">
-                    <div className="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center mx-auto">
-                      <stat.icon className="w-6 h-6 text-primary" />
+                  <CardContent className="p-0 space-y-3 md:space-y-4">
+                    <div className="w-10 h-10 md:w-12 md:h-12 bg-primary/10 rounded-full flex items-center justify-center mx-auto">
+                      <stat.icon className="w-5 h-5 md:w-6 md:h-6 text-primary" />
                     </div>
                     <div>
-                      <div className="text-3xl font-poppins font-bold text-gray-900">
+                      <div className="text-2xl md:text-3xl font-poppins font-bold text-gray-900">
                         {stat.value}
                       </div>
-                      <div className="text-sm text-gray-600">{stat.label}</div>
+                      <div className="text-xs md:text-sm text-gray-600">
+                        {stat.label}
+                      </div>
                     </div>
                   </CardContent>
                 </Card>
