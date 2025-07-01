@@ -257,19 +257,19 @@ export default function Index() {
       <CoreServicesShowreel />
 
       {/* Core Services Overview */}
-      <section className="py-20">
+      <section className="py-12 md:py-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <h3 className="text-4xl font-poppins font-bold text-gray-900 mb-4">
+          <div className="text-center mb-12 md:mb-16">
+            <h3 className="text-2xl md:text-3xl lg:text-4xl font-poppins font-bold text-gray-900 mb-3 md:mb-4">
               Our Core Healthcare Services
             </h3>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+            <p className="text-lg md:text-xl text-gray-600 max-w-3xl mx-auto">
               Three essential services powering healthcare excellence across the
               UK
             </p>
           </div>
 
-          <div className="grid md:grid-cols-3 gap-8">
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
             {coreServices.map((service, index) => {
               const Icon = service.icon;
 
