@@ -16,7 +16,7 @@ export default function TopBanner() {
   });
 
   return (
-    <div className="bg-gradient-to-r from-primary to-secondary text-white py-3 px-4 relative z-50">
+    <div className="hidden md:block bg-gradient-to-r from-primary to-secondary text-white py-3 px-4 relative z-50">
       <div className="max-w-7xl mx-auto flex items-center justify-between">
         <div className="flex items-center space-x-4">
           <div className="flex items-center space-x-2">
