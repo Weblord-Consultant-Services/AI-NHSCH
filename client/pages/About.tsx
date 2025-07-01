@@ -1,6 +1,7 @@
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
+import { Link } from "react-router-dom";
 import Navigation from "@/components/Navigation";
 import TopBanner from "@/components/TopBanner";
 import Footer from "@/components/Footer";
@@ -489,14 +490,13 @@ export default function About() {
           </div>
 
           <div className="text-center mt-12">
-            <Button
-              size="lg"
-              variant="secondary"
-              className="bg-white text-primary hover:bg-gray-100"
+            <Link
+              to="/contact"
+              className="inline-flex items-center justify-center gap-2 h-11 px-8 rounded-lg bg-white text-primary hover:bg-gray-100 transition-colors text-sm font-medium whitespace-nowrap"
             >
               Contact Our Team
               <ArrowRight className="w-5 h-5 ml-2" />
-            </Button>
+            </Link>
           </div>
         </div>
       </section>
