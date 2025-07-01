@@ -124,37 +124,84 @@
         "@context": "https://schema.org",
         "@type": "MedicalOrganization",
         "name": "NHSCareHub",
+        "alternateName": "NHS CareHub",
         "description": "Revolutionary digital healthcare management platform for NHS organizations. Access qualified staff, ensure compliance, manage equipment sourcing, and streamline healthcare operations.",
         "url": "https://nhscarehub.uk",
         "logo": "https://nhscarehub.uk/placeholder.svg",
+        "image": "https://nhscarehub.uk/placeholder.svg",
         "sameAs": [
           "https://twitter.com/NHSCareHub",
           "https://linkedin.com/company/nhscarehub",
           "https://facebook.com/NHSCareHub"
         ],
-        "contactPoint": {
-          "@type": "ContactPoint",
-          "telephone": "+44-203-488-8343",
-          "contactType": "Customer Service",
-          "areaServed": "GB",
-          "availableLanguage": "English"
-        },
+        "contactPoint": [
+          {
+            "@type": "ContactPoint",
+            "telephone": "+44-203-488-8343",
+            "contactType": "Customer Service",
+            "areaServed": "GB",
+            "availableLanguage": ["English", "en-GB"],
+            "hoursAvailable": "Mo-Fr 08:00-18:00"
+          },
+          {
+            "@type": "ContactPoint",
+            "email": "support@nhscarehub.uk",
+            "contactType": "Technical Support",
+            "areaServed": "GB",
+            "availableLanguage": ["English", "en-GB"]
+          }
+        ],
         "address": {
           "@type": "PostalAddress",
-          "addressCountry": "GB",
-          "addressRegion": "England"
+          "streetAddress": "85 Great Portland Street, First Floor",
+          "addressLocality": "London",
+          "addressRegion": "England",
+          "postalCode": "W1W 7LT",
+          "addressCountry": "GB"
+        },
+        "geo": {
+          "@type": "GeoCoordinates",
+          "latitude": "51.518",
+          "longitude": "-0.142"
         },
         "medicalSpecialty": [
           "Digital Health",
           "Healthcare Technology",
           "NHS Services",
-          "Healthcare Management"
+          "Healthcare Management",
+          "Healthcare IT",
+          "Medical Equipment",
+          "Healthcare Compliance"
         ],
         "hasCredential": [
           "NHS Digital Standards Compliance",
           "ISO 27001 Certification",
           "GDPR Compliance",
-          "Cyber Essentials Plus"
+          "Cyber Essentials Plus",
+          "Care Quality Commission"
+        ],
+        "founder": {
+          "@type": "Organization",
+          "name": "NHSCareHub Ltd"
+        },
+        "foundingDate": "2024",
+        "numberOfEmployees": "50-100",
+        "areaServed": {
+          "@type": "Country",
+          "name": "United Kingdom"
+        },
+        "serviceType": [
+          "Healthcare Staff Recruitment",
+          "Compliance Management",
+          "Medical Equipment Procurement",
+          "Healthcare Technology Platform"
+        ],
+        "knowsAbout": [
+          "NHS Standards",
+          "Healthcare Compliance",
+          "Medical Equipment",
+          "Healthcare Recruitment",
+          "Digital Health Technology"
         ]
       }
     </script>

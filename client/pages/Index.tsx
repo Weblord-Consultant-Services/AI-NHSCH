@@ -150,7 +150,7 @@ export default function Index() {
       <Navigation />
 
       {/* Hero Section */}
-      <section className="relative bg-gradient-to-br from-blue-50 to-green-50 py-20">
+      <section className="relative bg-gradient-to-br from-blue-50 to-green-50 py-12 md:py-20">
         <div
           className="absolute inset-0 bg-grid-pattern opacity-5"
           style={{
@@ -162,22 +162,22 @@ export default function Index() {
           }}
         ></div>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid lg:grid-cols-2 gap-12 items-center">
-            <div className="space-y-8">
-              <div className="flex items-center space-x-2">
-                <div className="w-12 h-12 bg-primary rounded-full flex items-center justify-center">
-                  <Heart className="w-7 h-7 text-white" />
+          <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center">
+            <div className="space-y-6 md:space-y-8 text-center lg:text-left">
+              <div className="flex items-center justify-center lg:justify-start space-x-2">
+                <div className="w-10 h-10 md:w-12 md:h-12 bg-primary rounded-full flex items-center justify-center">
+                  <Heart className="w-5 h-5 md:w-7 md:h-7 text-white" />
                 </div>
               </div>
 
-              <div className="space-y-4">
-                <h1 className="text-6xl font-poppins font-bold text-gray-900 leading-tight">
+              <div className="space-y-3 md:space-y-4">
+                <h1 className="text-4xl sm:text-5xl lg:text-6xl font-poppins font-bold text-gray-900 leading-tight">
                   NHSCareHub
                 </h1>
-                <h2 className="text-3xl font-poppins font-semibold text-gray-700">
+                <h2 className="text-xl sm:text-2xl lg:text-3xl font-poppins font-semibold text-gray-700">
                   All-in-One Healthcare Platform
                 </h2>
-                <p className="text-xl text-gray-600 leading-relaxed">
+                <p className="text-lg md:text-xl text-gray-600 leading-relaxed max-w-2xl mx-auto lg:mx-0">
                   Streamline healthcare operations with staff recruitment,
                   compliance management, and equipment sourcing - all in one
                   comprehensive platform.
