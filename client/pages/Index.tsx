@@ -22,6 +22,7 @@ import {
   ExternalLink,
   MapPin,
   Phone,
+  Info,
 } from "lucide-react";
 
 export default function Index() {
