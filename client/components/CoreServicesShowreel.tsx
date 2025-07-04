@@ -299,7 +299,11 @@ export default function CoreServicesShowreel() {
 
                           {/* CTA Buttons */}
                           <div className="flex flex-col sm:flex-row gap-3">
-                            <Button size="lg" className="text-lg px-8">
+                            <Button
+                              size="lg"
+                              className="text-lg px-8"
+                              onClick={() => handleCTAClick(slide, true)}
+                            >
                               {slide.cta.primary}
                               <ArrowRight className="ml-2 w-5 h-5" />
                             </Button>
@@ -307,11 +311,12 @@ export default function CoreServicesShowreel() {
                               variant="outline"
                               size="lg"
                               className="text-lg px-8"
+                              onClick={() => handleCTAClick(slide, false)}
                             >
                               {slide.service === "compliance" ? (
                                 <Download className="w-5 h-5 mr-2" />
                               ) : (
-                                <ExternalLink className="w-5 h-5 mr-2" />
+                                <MessageCircle className="w-5 h-5 mr-2" />
                               )}
                               {slide.cta.secondary}
                             </Button>
