@@ -472,9 +472,6 @@ export default function CoreServicesShowreel() {
                   Live Platform Analytics
                 </span>
               </div>
-              <span className="text-sm text-gray-600">
-                Real-time data across all services
-              </span>
             </div>
             <div className="flex items-center space-x-6">
               <div className="text-center">
