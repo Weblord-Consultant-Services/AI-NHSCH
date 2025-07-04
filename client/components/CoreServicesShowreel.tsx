@@ -62,7 +62,7 @@ export default function CoreServicesShowreel() {
       ],
       cta: {
         primary: "Browse Jobs",
-        secondary: "Register as Staff",
+        secondary: "Enquire more",
       },
     },
     {
@@ -84,8 +84,8 @@ export default function CoreServicesShowreel() {
         "Automated alerts",
       ],
       cta: {
-        primary: "View Documents",
-        secondary: "Download Guidelines",
+        primary: "Compliance Document",
+        secondary: "Review Guideline",
       },
     },
     {
@@ -108,7 +108,7 @@ export default function CoreServicesShowreel() {
       ],
       cta: {
         primary: "Browse Equipment",
-        secondary: "List Your Equipment",
+        secondary: "Enquire more",
       },
     },
   ];
