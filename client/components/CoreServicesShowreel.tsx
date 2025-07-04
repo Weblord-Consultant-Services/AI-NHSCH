@@ -493,6 +493,272 @@ export default function CoreServicesShowreel() {
           </div>
         </div>
       </div>
+
+      {/* Contact Form Modal */}
+      {isContactModalOpen && (
+        <div className="fixed inset-0 bg-black/50 z-50 flex items-center justify-center p-4">
+          <Card className="w-full max-w-md max-h-[90vh] overflow-y-auto">
+            <div className="relative p-6">
+              <button
+                onClick={() => setIsContactModalOpen(false)}
+                className="absolute right-4 top-4 p-2 hover:bg-gray-100 rounded-full transition-colors"
+              >
+                <X className="w-5 h-5" />
+              </button>
+
+              <div className="mb-6">
+                <h3 className="text-xl font-semibold text-gray-900 mb-2">
+                  Enquire More
+                </h3>
+                <p className="text-gray-600">
+                  Send us your enquiry and we'll get back to you within 24
+                  hours.
+                </p>
+              </div>
+
+              <form onSubmit={handleContactFormSubmit} className="space-y-4">
+                <div className="grid grid-cols-2 gap-3">
+                  <div className="space-y-2">
+                    <label className="text-sm font-medium">Name *</label>
+                    <div className="relative">
+                      <User className="absolute left-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-gray-400" />
+                      <Input
+                        type="text"
+                        placeholder="Your name"
+                        value={contactFormData.name}
+                        onChange={(e) =>
+                          handleInputChange("name", e.target.value)
+                        }
+                        className="pl-10"
+                        required
+                      />
+                    </div>
+                  </div>
+                  <div className="space-y-2">
+                    <label className="text-sm font-medium">Email *</label>
+                    <div className="relative">
+                      <Mail className="absolute left-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-gray-400" />
+                      <Input
+                        type="email"
+                        placeholder="your@email.com"
+                        value={contactFormData.email}
+                        onChange={(e) =>
+                          handleInputChange("email", e.target.value)
+                        }
+                        className="pl-10"
+                        required
+                      />
+                    </div>
+                  </div>
+                </div>
+
+                <div className="grid grid-cols-2 gap-3">
+                  <div className="space-y-2">
+                    <label className="text-sm font-medium">Phone</label>
+                    <div className="relative">
+                      <Phone className="absolute left-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-gray-400" />
+                      <Input
+                        type="tel"
+                        placeholder="+44 7XXX XXXXXX"
+                        value={contactFormData.phone}
+                        onChange={(e) =>
+                          handleInputChange("phone", e.target.value)
+                        }
+                        className="pl-10"
+                      />
+                    </div>
+                  </div>
+                  <div className="space-y-2">
+                    <label className="text-sm font-medium">Organization</label>
+                    <div className="relative">
+                      <Building className="absolute left-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-gray-400" />
+                      <Input
+                        type="text"
+                        placeholder="NHS Trust"
+                        value={contactFormData.organization}
+                        onChange={(e) =>
+                          handleInputChange("organization", e.target.value)
+                        }
+                        className="pl-10"
+                      />
+                    </div>
+                  </div>
+                </div>
+
+                <div className="space-y-2">
+                  <label className="text-sm font-medium">Subject *</label>
+                  <Input
+                    type="text"
+                    placeholder="Brief subject of your enquiry"
+                    value={contactFormData.subject}
+                    onChange={(e) =>
+                      handleInputChange("subject", e.target.value)
+                    }
+                    required
+                  />
+                </div>
+
+                <div className="space-y-2">
+                  <label className="text-sm font-medium">Message *</label>
+                  <textarea
+                    placeholder="Please provide details about your enquiry..."
+                    value={contactFormData.message}
+                    onChange={(e) =>
+                      handleInputChange("message", e.target.value)
+                    }
+                    className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary min-h-[100px] resize-y"
+                    required
+                  />
+                </div>
+
+                <div className="bg-blue-50 p-3 rounded-lg">
+                  <p className="text-sm text-blue-700">
+                    Your enquiry will be sent to{" "}
+                    <strong>info@nhscarehub.uk</strong> and we'll respond within
+                    24 hours.
+                  </p>
+                </div>
+
+                <Button
+                  type="submit"
+                  disabled={isSubmitting}
+                  className="w-full"
+                >
+                  {isSubmitting ? (
+                    <div className="w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin mr-2" />
+                  ) : (
+                    <Send className="w-4 h-4 mr-2" />
+                  )}
+                  {isSubmitting ? "Sending..." : "Send Enquiry"}
+                </Button>
+              </form>
+            </div>
+          </Card>
+        </div>
+      )}
+
+      {/* Guidelines Modal */}
+      {isGuidelineModalOpen && (
+        <div className="fixed inset-0 bg-black/50 z-50 flex items-center justify-center p-4">
+          <Card className="w-full max-w-2xl max-h-[90vh] overflow-y-auto">
+            <div className="relative p-6">
+              <button
+                onClick={() => setIsGuidelineModalOpen(false)}
+                className="absolute right-4 top-4 p-2 hover:bg-gray-100 rounded-full transition-colors"
+              >
+                <X className="w-5 h-5" />
+              </button>
+
+              <div className="mb-6">
+                <h3 className="text-xl font-semibold text-gray-900 mb-2">
+                  NHSCareHub Compliance Guidelines
+                </h3>
+                <p className="text-gray-600">
+                  Please review these guidelines before downloading and using
+                  our compliance documents.
+                </p>
+              </div>
+
+              <div className="space-y-6">
+                <div className="bg-blue-50 p-4 rounded-lg">
+                  <h4 className="font-semibold text-blue-900 mb-2">
+                    Data Protection & Privacy
+                  </h4>
+                  <ul className="text-sm text-blue-700 space-y-1">
+                    <li>
+                      • All documents must be handled in accordance with GDPR
+                      regulations
+                    </li>
+                    <li>
+                      • Patient data should never be stored in downloaded
+                      documents
+                    </li>
+                    <li>
+                      • Access to documents should be restricted to authorized
+                      personnel only
+                    </li>
+                    <li>
+                      • Regular review and deletion of outdated documents is
+                      required
+                    </li>
+                  </ul>
+                </div>
+
+                <div className="bg-green-50 p-4 rounded-lg">
+                  <h4 className="font-semibold text-green-900 mb-2">
+                    Usage Guidelines
+                  </h4>
+                  <ul className="text-sm text-green-700 space-y-1">
+                    <li>• Documents are for NHS organization use only</li>
+                    <li>• Commercial redistribution is strictly prohibited</li>
+                    <li>• Always use the latest version of documents</li>
+                    <li>• Report any discrepancies to info@nhscarehub.uk</li>
+                  </ul>
+                </div>
+
+                <div className="bg-orange-50 p-4 rounded-lg">
+                  <h4 className="font-semibold text-orange-900 mb-2">
+                    Compliance Requirements
+                  </h4>
+                  <ul className="text-sm text-orange-700 space-y-1">
+                    <li>
+                      • Ensure your organization meets all specified standards
+                    </li>
+                    <li>
+                      • Maintain audit trails for document access and usage
+                    </li>
+                    <li>• Regular compliance reviews should be conducted</li>
+                    <li>
+                      • Non-compliance issues must be reported immediately
+                    </li>
+                  </ul>
+                </div>
+
+                <div className="bg-red-50 p-4 rounded-lg">
+                  <h4 className="font-semibold text-red-900 mb-2">
+                    Security Requirements
+                  </h4>
+                  <ul className="text-sm text-red-700 space-y-1">
+                    <li>
+                      • Documents must be stored securely with appropriate
+                      access controls
+                    </li>
+                    <li>• Never share login credentials or access links</li>
+                    <li>• Report any security incidents to our support team</li>
+                    <li>• Regular security assessments should be performed</li>
+                  </ul>
+                </div>
+
+                <div className="bg-gray-50 p-4 rounded-lg">
+                  <p className="text-sm text-gray-700">
+                    <strong>Disclaimer:</strong> By downloading and using these
+                    documents, you acknowledge that you have read, understood,
+                    and agree to comply with all the above guidelines.
+                    NHSCareHub reserves the right to revoke access for
+                    non-compliance.
+                  </p>
+                </div>
+
+                <div className="flex space-x-3">
+                  <Link to="/compliance" className="flex-1">
+                    <Button className="w-full">
+                      <Download className="w-4 h-4 mr-2" />I Agree - Go to
+                      Compliance Page
+                    </Button>
+                  </Link>
+                  <Button
+                    variant="outline"
+                    onClick={() => setIsGuidelineModalOpen(false)}
+                    className="flex-1"
+                  >
+                    Cancel
+                  </Button>
+                </div>
+              </div>
+            </div>
+          </Card>
+        </div>
+      )}
     </section>
   );
 }
