@@ -155,6 +155,52 @@ export default function CoreServicesShowreel() {
     setIsPlaying(!isPlaying);
   };
 
+  const handleContactFormSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setIsSubmitting(true);
+
+    // Simulate form submission to info@nhscarehub.uk
+    await new Promise((resolve) => setTimeout(resolve, 2000));
+
+    alert(
+      "Your enquiry has been sent to info@nhscarehub.uk. We'll get back to you within 24 hours.",
+    );
+    setContactFormData({
+      name: "",
+      email: "",
+      phone: "",
+      organization: "",
+      subject: "",
+      message: "",
+    });
+    setIsContactModalOpen(false);
+    setIsSubmitting(false);
+  };
+
+  const handleInputChange = (field: string, value: string) => {
+    setContactFormData((prev) => ({ ...prev, [field]: value }));
+  };
+
+  const handleCTAClick = (slide: ServiceSlide, isPrimary: boolean) => {
+    if (isPrimary) {
+      // Primary button - navigate to respective pages
+      if (slide.service === "recruitment") {
+        window.location.href = "/staff-portal";
+      } else if (slide.service === "compliance") {
+        window.location.href = "/compliance";
+      } else if (slide.service === "equipment") {
+        window.location.href = "/equipment";
+      }
+    } else {
+      // Secondary button - handle modals
+      if (slide.service === "compliance") {
+        setIsGuidelineModalOpen(true);
+      } else {
+        setIsContactModalOpen(true);
+      }
+    }
+  };
+
   const getServiceIcon = (service: string) => {
     switch (service) {
       case "recruitment":
