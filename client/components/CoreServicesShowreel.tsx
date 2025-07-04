@@ -1,7 +1,9 @@
 import { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
+import { Input } from "@/components/ui/input";
 import {
   ChevronLeft,
   ChevronRight,
@@ -16,6 +18,13 @@ import {
   ArrowRight,
   Download,
   ExternalLink,
+  X,
+  Send,
+  Mail,
+  User,
+  Building,
+  Phone,
+  MessageCircle,
 } from "lucide-react";
 
 interface ServiceSlide {
@@ -39,6 +48,17 @@ interface ServiceSlide {
 export default function CoreServicesShowreel() {
   const [currentSlide, setCurrentSlide] = useState(0);
   const [isPlaying, setIsPlaying] = useState(true);
+  const [isContactModalOpen, setIsContactModalOpen] = useState(false);
+  const [isGuidelineModalOpen, setIsGuidelineModalOpen] = useState(false);
+  const [contactFormData, setContactFormData] = useState({
+    name: "",
+    email: "",
+    phone: "",
+    organization: "",
+    subject: "",
+    message: "",
+  });
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   // Real-time data for the 3 core services
   const slides: ServiceSlide[] = [
