@@ -232,7 +232,7 @@ export default function CoreServicesShowreel() {
 
   return (
     <section className="relative bg-gray-50 py-16">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col">
         <div className="text-center mb-12">
           <h3 className="text-4xl font-poppins font-bold text-gray-900 mb-4">
             Core Healthcare Services
@@ -463,7 +463,7 @@ export default function CoreServicesShowreel() {
         </div>
 
         {/* Real-time Analytics Bar */}
-        <div className="mt-12 bg-white rounded-xl p-6 shadow-lg">
+        <div className="mt-12 bg-white rounded-xl p-5 shadow-lg">
           <div className="flex items-center justify-between">
             <div className="flex items-center space-x-4">
               <div className="flex items-center space-x-2">
