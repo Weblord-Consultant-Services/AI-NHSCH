@@ -206,24 +206,25 @@ export default function Index() {
               </div>
 
               <div className="flex flex-col sm:flex-row gap-3 sm:gap-4">
-                <Link to="/staff-portal" className="w-full sm:w-auto">
+                <Link to="/about" className="w-full sm:w-auto">
                   <Button
                     size="lg"
                     className="text-base md:text-lg px-6 md:px-8 py-3 md:py-4 w-full"
                   >
-                    Explore Services
+                    About NHSCareHub
                     <ArrowRight className="ml-2 w-4 h-4 md:w-5 md:h-5" />
                   </Button>
                 </Link>
-                <Button
-                  variant="outline"
-                  size="lg"
-                  className="text-base md:text-lg px-6 md:px-8 py-3 md:py-4 w-full sm:w-auto"
-                  onClick={() => setIsConnectModalOpen(true)}
-                >
-                  <Download className="mr-2 w-4 h-4 md:w-5 md:h-5" />
-                  Download Guide
-                </Button>
+                <Link to="/contact" className="w-full sm:w-auto">
+                  <Button
+                    variant="outline"
+                    size="lg"
+                    className="text-base md:text-lg px-6 md:px-8 py-3 md:py-4 w-full sm:w-auto"
+                  >
+                    <Info className="mr-2 w-4 h-4 md:w-5 md:h-5" />
+                    More Information
+                  </Button>
+                </Link>
               </div>
             </div>
 
